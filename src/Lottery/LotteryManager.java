@@ -26,10 +26,32 @@ public class LotteryManager {
     List<Bingo> bingos = new ArrayList<>();
     List<Tiempos> tiemposs = new ArrayList<>();
 
-    public static final LotteryManager instance = new LotteryManager();
+    public static final LotteryManager instance;
 
     public static LotteryManager getInstance() {
         return instance;
+    }
+
+    static {
+        instance = new LotteryManager();
+        instance.raffles.add(new Raffle() {
+            {
+                setName("Gordo");
+                setNumbemission(1);
+                setType(RaffleType.Loteria.name());
+                setEmission("12/12/19");
+                setCode(45);
+            }
+        });
+        instance.raffles.add(new Raffle() {
+            {
+                setName("Marzo");
+                setNumbemission(2);
+                setType(RaffleType.Lotto.name());
+                setEmission("12/11/19");
+                setCode(34);
+            }
+        });
     }
 
     public void removeLoteria(int index) {

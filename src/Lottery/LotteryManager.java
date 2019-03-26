@@ -17,17 +17,41 @@ import java.util.List;
 public class LotteryManager {
 
     List<Tickets> tickets = new SimpleLinkeList<>();
-    List<Raffle> raffle = new DoubleLinkedList<>();
-    List<Client> client = new SimpleLinkeList<>();
-    List<Loteria> loteria = new LQueue<>();
-    List<Lotto> lotto = new SimpleLinkeList<>();
-    List<Bingo> bingo = new ArrayList<>();
-    List<Tiempos> tiempos = new ArrayList<>();
+    List<Raffle> raffles = new DoubleLinkedList<>();
+    List<Client> clients = new LQueue<>();
+    List<Loteria> loterias = new LQueue<>();
+    List<Lotto> lottos = new SimpleLinkeList<>();
+    List<Bingo> bingos = new ArrayList<>();
+    List<Tiempos> tiemposs = new ArrayList<>();
 
     private static LotteryManager instance;
 
     public static LotteryManager getInstance() {
         return instance;
+    }
+
+    public void removeClient(int index) {
+        clients.remove(index);
+    }
+
+    public Collection<Client> getClients() {
+        return clients;
+    }
+
+    public void addClient(Client newClient) {
+        this.clients.add(newClient);
+    }
+
+    public void removeRaffle(int index) {
+        raffles.remove(index);
+    }
+
+    public Collection<Raffle> getRaffles() {
+        return raffles;
+    }
+
+    public void addRaffle(Raffle newRaffle) {
+        this.raffles.add(newRaffle);
     }
 
     public void removeTickets(int index) {
@@ -41,28 +65,32 @@ public class LotteryManager {
     public void addTickets(Tickets newTickets) {
         this.tickets.add(newTickets);
     }
-/*
-    public Collection<Tickets> search(Tickets newTicket) {
-        List<Tickets> results = new ArrayList<>();
 
-        boolean byName = newTicket.getName() != null && newTicket.getName().length() > 0;
-        boolean byType = newTicket.getTopic() != null && newTicket.getTopic().length() > 0;
+    public Collection<Raffle> searchRaffle(Raffle newRaffle) {
+        List<Raffle> results = new SimpleLinkeList<>();
 
-        for (Tickets ticket : tickets) {
-            boolean add = !(byName || byType);
-            if (!add && byName && ticket.getRaffleType().contains(newTicket.getRaffleType())) {
+        boolean byName = newRaffle.getName() != null && newRaffle.getName().length() > 0;
+        boolean byType = newRaffle.getType() != null && newRaffle.getType().length() > 0;
+        boolean byEmission = newRaffle.getEmission() != null && newRaffle.getEmission().length() > 0;
+
+        for (Raffle raffle : raffles) {
+            boolean add = !(byName || byType || byEmission);
+            if (!add && byName && raffle.getName().contains(newRaffle.getName())) {
                 add = true;
             }
-            if (!add && byType && ticket.getTopic().contains(newTicket.getTopic())) {
+            if (!add && byType && raffle.getType().contains(newRaffle.getType())) {
+                add = true;
+            }
+            if (!add && byEmission && raffle.getEmission().contains(newRaffle.getEmission())) {
                 add = true;
             }
             if (add) {
-                results.add(ticket);
+                results.add(raffle);
             }
         }
 
         return results;
 
     }
-*/
+
 }

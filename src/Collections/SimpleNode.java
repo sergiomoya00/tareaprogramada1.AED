@@ -1,4 +1,4 @@
-package tareaprograma2.datos1.collections;
+package Collections;
 
 public class SimpleNode<T> {
 

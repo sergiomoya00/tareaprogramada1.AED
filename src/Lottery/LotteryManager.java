@@ -5,7 +5,9 @@
  */
 package Lottery;
 
-import Collections.*;
+import Collections.LQueue;
+import Collections.SimpleLinkeList;
+import Collections.DoubleLinkedList;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -25,7 +27,7 @@ public class LotteryManager {
     List<Bingo> bingos = new ArrayList<>();
     List<Tiempos> tiemposs = new ArrayList<>();
     
-    private static final LotteryManager instance = new LotteryManager();
+    public static final LotteryManager instance = new LotteryManager();
 
     public static LotteryManager getInstance() {
         return instance;

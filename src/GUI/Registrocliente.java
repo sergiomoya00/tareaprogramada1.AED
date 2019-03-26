@@ -1,5 +1,8 @@
 package GUI;
 
+import Lottery.Client;
+import Lottery.LotteryManager;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,9 +15,17 @@ package GUI;
  */
 public class Registrocliente extends javax.swing.JFrame {
 
+    private Client client;
+
     /**
      * Creates new form PedidoTicket
+     *
+     * @return
      */
+    public Client getClient() {
+        return client;
+    }
+
     public Registrocliente() {
         initComponents();
     }
@@ -35,12 +46,12 @@ public class Registrocliente extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txtname = new javax.swing.JTextField();
+        txtbirth = new javax.swing.JTextField();
+        txtid = new javax.swing.JTextField();
+        txtaddress = new javax.swing.JTextField();
+        txtphone = new javax.swing.JTextField();
+        txtemail = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -69,23 +80,35 @@ public class Registrocliente extends javax.swing.JFrame {
         jLabel7.setText("Correo electrónico");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
-        jTextField1.setText("jTextField1");
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 270, 30));
+        txtname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnameActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 270, 30));
 
-        jTextField2.setText("jTextField2");
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 150, -1));
+        txtbirth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtbirthActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtbirth, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 150, -1));
 
-        jTextField3.setText("jTextField3");
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 140, -1));
+        txtid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtidActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 140, -1));
+        getContentPane().add(txtaddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 190, -1));
 
-        jTextField4.setText("jTextField4");
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 190, -1));
-
-        jTextField5.setText("jTextField5");
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 110, -1));
-
-        jTextField6.setText("jTextField6");
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 180, 30));
+        txtphone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtphoneActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtphone, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 110, -1));
+        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 180, 30));
 
         jButton1.setText("Siguiente");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +116,7 @@ public class Registrocliente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, -1, -1));
 
         jButton2.setText("Atrás");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -107,16 +130,43 @@ public class Registrocliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    Entrada usuario= new Entrada();
-    usuario.setVisible(true);
-    this.setVisible(false);          // TODO add your handling code here:
+        Entrada usuario = new Entrada();
+        usuario.setVisible(true);
+        this.setVisible(false);          // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    Gestioncliente usuario= new Gestioncliente();
-    usuario.setVisible(true);
-    this.setVisible(false);        // TODO add your handling code here:
+        this.client = new Client();
+        this.client.setAddress(txtaddress.getText());
+        this.client.setEmail(txtemail.getText());
+        this.client.setName(txtname.getText());
+        this.client.setBirthdate(txtbirth.getText());
+        int id = Integer.parseInt(txtid.getText());
+        int phone = Integer.parseInt(txtphone.getText());
+        this.client.setId(id);
+        this.client.setPhone(phone);
+        LotteryManager.getInstance().addClient(client);
+        Gestioncliente usuario = new Gestioncliente();
+        usuario.setVisible(true);
+        this.setVisible(false);
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnameActionPerformed
+
+    private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtidActionPerformed
+
+    private void txtbirthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbirthActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbirthActionPerformed
+
+    private void txtphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtphoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtphoneActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,11 +214,11 @@ public class Registrocliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField txtaddress;
+    private javax.swing.JTextField txtbirth;
+    private javax.swing.JTextField txtemail;
+    private javax.swing.JTextField txtid;
+    private javax.swing.JTextField txtname;
+    private javax.swing.JTextField txtphone;
     // End of variables declaration//GEN-END:variables
 }

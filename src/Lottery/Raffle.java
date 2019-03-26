@@ -12,9 +12,10 @@ package Lottery;
 public class Raffle {
 
     private String name;
-    private int code;
+    private int code,numbemission;
     private String type;
-    private String emission;
+    private String emission,date;
+    
 
     public Raffle(String name, int code, String type, String emission) {
         this.name = name;
@@ -24,6 +25,21 @@ public class Raffle {
     }
 
     public Raffle() {
+    }
+    public int getNumbemission() {
+        return numbemission;
+    }
+
+    public void setNumbemission(int numbemission) {
+        this.numbemission = numbemission;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getName() {

@@ -16,6 +16,10 @@ import java.util.Random;
  */
 public class CrearSorteo extends javax.swing.JFrame {
     private Raffle raffle;
+    private Loteria loteria;
+    private Lotto lotto;
+    private Bingo bingo;
+    private Tiempos tiempos;
 
     /**
      * Creates new form PedidoTicket
@@ -24,6 +28,12 @@ public class CrearSorteo extends javax.swing.JFrame {
      */
     public Raffle getClient() {
         return raffle;
+    }
+    public Loteria getLoteria(){
+       return loteria;
+    }
+    public Lotto getLotto(){
+       return lotto;
     }
     /**
      * Creates new form CrearSorteo
@@ -46,8 +56,6 @@ public class CrearSorteo extends javax.swing.JFrame {
         txtname = new javax.swing.JTextField();
         comboraffle = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txtemisiones = new javax.swing.JTextField();
         txtdate = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -66,24 +74,19 @@ public class CrearSorteo extends javax.swing.JFrame {
         getContentPane().add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 160, -1));
 
         comboraffle.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lotería", "Lotto", "Bingo", "Tiempos" }));
+        comboraffle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboraffleActionPerformed(evt);
+            }
+        });
         getContentPane().add(comboraffle, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 140, -1));
 
         jLabel3.setText("Tipo de sorteo");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
-
-        jLabel4.setText("Numero de Emisiones");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
-
-        txtemisiones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtemisionesActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtemisiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 60, 30));
-        getContentPane().add(txtdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 140, -1));
+        getContentPane().add(txtdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 140, -1));
 
         jLabel5.setText("Fecha del sorteo");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
         jButton2.setText("Crear");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -94,33 +97,46 @@ public class CrearSorteo extends javax.swing.JFrame {
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, -1, -1));
 
         jLabel6.setText("Fecha de emision");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
-        getContentPane().add(txtemision, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 120, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+        getContentPane().add(txtemision, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 120, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     this.raffle= new Raffle();
-    DoubleLinkedList d= new DoubleLinkedList();
     this.raffle.setName(txtname.getText());
     this.raffle.setType((String)comboraffle.getSelectedItem());
-    int numemission = Integer.parseInt(txtemisiones.getText());
-    this.raffle.setNumbemission(numemission);
     this.raffle.setEmission(txtemision.getText());
     this.raffle.setDate(txtdate.getText());
     Random rand = new Random();
     int code = rand.nextInt(100);
     this.raffle.setCode(code);
+    if (comboraffle.getSelectedIndex()==0){
+    this.loteria=new Loteria();
+    this.loteria.setName(txtname.getText());
+    this.loteria.setEmissiondate(txtemision.getText());
+    this.loteria.setLoteriadate(txtdate.getText());
+    LotteryManager.getInstance().addLoteria(loteria);
+    }
+    if (comboraffle.getSelectedIndex()==1){
+    this.lotto=new Lotto();
+    this.lotto.setName(txtname.getText());
+    this.lotto.setLottodate(txtdate.getText());
+    this.lotto.setEmissiondate(txtemision.getText());
+    LotteryManager.getInstance().addLotto(lotto);
+    }
+    if (comboraffle.getSelectedIndex()==2){}
+    if (comboraffle.getSelectedIndex()==3){}
     LotteryManager.getInstance().addRaffle(raffle);
     Gestiónsorteos usuario= new Gestiónsorteos();
     usuario.setVisible(true);
     this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void txtemisionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemisionesActionPerformed
+    private void comboraffleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboraffleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtemisionesActionPerformed
+    }//GEN-LAST:event_comboraffleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,12 +179,10 @@ public class CrearSorteo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField txtdate;
     private javax.swing.JTextField txtemision;
-    private javax.swing.JTextField txtemisiones;
     private javax.swing.JTextField txtname;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,9 +14,9 @@ public class Raffle {
     private String name;
     private int code;
     private String type;
-    private int emission;
+    private String emission;
 
-    public Raffle(String name, int code, String type, int emission) {
+    public Raffle(String name, int code, String type, String emission) {
         this.name = name;
         this.code = code;
         this.type = type;
@@ -50,11 +50,11 @@ public class Raffle {
         this.type = type;
     }
 
-    public int getEmission() {
+    public String getEmission() {
         return emission;
     }
 
-    public void setEmission(int emission) {
+    public void setEmission(String emission) {
         this.emission = emission;
     }
     

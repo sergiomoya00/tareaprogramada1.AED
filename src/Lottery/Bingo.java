@@ -13,7 +13,7 @@ public class Bingo {
 
     private String date;
     private int winnernumb;
-    private int numero1,numero2,numero3,numero4,numero5,numero6,numero7;
+    private int numero1,numero2,numero3,numero4,numero5,numero6,numero7,numero8,numero9;
 
     public Bingo(String date, int winner) {
         this.date = date;
@@ -44,6 +44,8 @@ public class Bingo {
     numero5 = rand.nextInt(100);
     numero6 = rand.nextInt(100);
     numero7 = rand.nextInt(100);
+    numero8 = rand.nextInt(100);
+    numero9 = rand.nextInt(100);
     }
     
 }

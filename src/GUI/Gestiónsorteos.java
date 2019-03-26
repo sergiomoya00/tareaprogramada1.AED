@@ -1,5 +1,10 @@
 package GUI;
 
+import Lottery.LotteryManager;
+import Collections.DoubleLinkedList;
+import Lottery.Raffle;
+import javax.swing.table.DefaultTableModel;
+
 
 
 /*
@@ -13,12 +18,22 @@ package GUI;
  * @author Fanny Brenes
  */
 public class Gestiónsorteos extends javax.swing.JFrame {
-
+    DefaultTableModel tabla=new DefaultTableModel();
+    Raffle newRaffle= new Raffle();
     /**
      * Creates new form Gestiónsorteos
      */
+    private void Updateraffle(){
+    DefaultTableModel model= ((DefaultTableModel) Tablasorteos.getModel());
+    model.setRowCount(0);
+    for (Raffle raffle: LotteryManager.getInstance().searchRaffle(newRaffle)){
+        model.addRow(new Object[]{
+            raffle.getName(),raffle.getCode(),raffle.getType(),raffle.getEmission(),raffle.getDate()
+        });
+    }}
     public Gestiónsorteos() {
         initComponents();
+        Updateraffle();
     }
 
     /**
@@ -32,7 +47,7 @@ public class Gestiónsorteos extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tablasorteos = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -44,7 +59,7 @@ public class Gestiónsorteos extends javax.swing.JFrame {
         jLabel1.setText("Gestión Sorteos");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tablasorteos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -55,7 +70,7 @@ public class Gestiónsorteos extends javax.swing.JFrame {
                 "Nombre del Sorteo", "Código", "Tipo", "Emisiones", "Fecha del sorteo"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Tablasorteos);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 550, 220));
 
@@ -69,6 +84,11 @@ public class Gestiónsorteos extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
 
         jButton2.setText("Eliminar sorteo");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, -1, -1));
 
         jButton4.setText("Atrás");
@@ -85,7 +105,12 @@ public class Gestiónsorteos extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     CrearSorteo usuario= new CrearSorteo();
     usuario.setVisible(true);
-    this.setVisible(false);        // TODO add your handling code here:
+    usuario.addWindowStateListener(new java.awt.event.WindowAdapter() {
+        @Override
+    public void windowDeactivated(java.awt.event.WindowEvent windowEvent){
+    Updateraffle();
+    }    
+});        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -93,6 +118,11 @@ public class Gestiónsorteos extends javax.swing.JFrame {
     usuario.setVisible(true);
     this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    LotteryManager.getInstance().removeRaffle(this.Tablasorteos.getSelectedRow()); 
+    Updateraffle();// TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,11 +160,11 @@ public class Gestiónsorteos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Tablasorteos;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

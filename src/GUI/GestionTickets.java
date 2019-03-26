@@ -1,24 +1,42 @@
 package GUI;
 
-
+import Lottery.LotteryManager;
+import Lottery.Tickets;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Fanny Brenes
  */
 public class GestionTickets extends javax.swing.JFrame {
 
+    private Tickets ticket;
+
+    public Tickets getTickets() {
+        return ticket;
+    }
+
     /**
      * Creates new form GestionTickets
      */
     public GestionTickets() {
         initComponents();
+    }
+
+    public void refreshTickets() {
+        DefaultTableModel model = ((DefaultTableModel) ticketTable.getModel());
+        model.setRowCount(0);
+        for (Tickets ticket : LotteryManager.getInstance().getTickets()) {
+            model.addRow(new Object[]{
+                ticket.getTransmitterName(), ticket.getRaffleType(), ticket.getNumber(), ticket.getPrice()
+            });
+
+        }
     }
 
     /**
@@ -33,7 +51,7 @@ public class GestionTickets extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        ticketTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -48,29 +66,44 @@ public class GestionTickets extends javax.swing.JFrame {
         jLabel1.setText("Gestión de tiquetes");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        ticketTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Nombre del emisor", "Nombre del cliente", "Tipo de sorteo", "Numero o combinación elegida", "Precio", "Fecha del sorteo"
+                "Nombre del emisor", "Tipo de sorteo", "Numero o combinación elegida", "Precio", "Fecha del sorteo"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(ticketTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 670, 140));
 
         jButton1.setText("Crear ticket");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, -1, -1));
 
         jButton2.setText("Eliminar ticket");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, -1, -1));
 
         jButton4.setText("Modificar ticket");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, -1));
 
         jButton5.setText("Atrás");
@@ -85,10 +118,23 @@ public class GestionTickets extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-    Gestionjps usuario= new Gestionjps();
-    usuario.setVisible(true);
-    this.setVisible(false);        // TODO add your handling code here:
+        Gestionjps usuario = new Gestionjps();
+        usuario.setVisible(true);
+        this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        LotteryManager.getInstance().removeTickets(this.ticketTable.getSelectedRow());
+        refreshTickets();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,6 +179,6 @@ public class GestionTickets extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable ticketTable;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,11 @@
  */
 package GUI;
 
+import Lottery.LotteryManager;
+import Lottery.Raffle;
+import Lottery.RaffleType;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Fanny Brenes
@@ -14,8 +19,62 @@ public class Busquedasorteos extends javax.swing.JFrame {
     /**
      * Creates new form Busquedasorteos
      */
+    private Raffle raffle;
+
+    public Raffle getRaffle() {
+        return raffle;
+    }
+
     public Busquedasorteos() {
         initComponents();
+
+        this.nameRa.addItem("Nombre de rifas");
+        for (Raffle raffle : LotteryManager.getInstance().getRaffles()) {
+            nameRa.addItem(raffle.getName());
+        }
+
+        this.typeRa.addItem("Tipos");
+        for (RaffleType topic : RaffleType.values()) {
+            typeRa.addItem(topic.name());
+        }
+
+        this.emissionRa.addItem("Emisión");
+        for (Raffle raffle : LotteryManager.getInstance().getRaffles()) {
+            emissionRa.addItem(raffle.getEmission());
+        }
+
+    }
+
+    private void refreshSearch() {
+
+        String raffleName = (String) nameRa.getSelectedItem(); //Valida que hayan valores en el ComboBox.
+        if (nameRa.getSelectedIndex() == 0) {
+            raffleName = null;
+        }
+
+        String topicName = (String) typeRa.getSelectedItem();
+        if (typeRa.getSelectedIndex() == 0) {
+            topicName = null;
+        }
+        String emissionName = (String) emissionRa.getSelectedItem();
+        if (emissionRa.getSelectedIndex() == 0) {
+            emissionName = null;
+        }
+        
+        Raffle newRaffle = new Raffle();
+        newRaffle.setType(topicName);
+        String name = this.raffleName.getText();
+        newRaffle.setName(name);
+        
+        DefaultTableModel model = ((DefaultTableModel) raffleTable.getModel());
+        model.setRowCount(0);
+        for (Raffle raffle : LotteryManager.getInstance().searchRaffle(newRaffle)) {
+            model.addRow(new Object[]{
+                raffle.getName(), raffle.getEmission(), raffle.getType()
+            });
+
+        }
+        
     }
 
     /**
@@ -28,17 +87,17 @@ public class Busquedasorteos extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        nameRa = new javax.swing.JComboBox<>();
+        typeRa = new javax.swing.JComboBox<>();
+        emissionRa = new javax.swing.JComboBox<>();
+        pricesRa = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        raffleTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
+        raffleName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -47,19 +106,15 @@ public class Busquedasorteos extends javax.swing.JFrame {
         jLabel1.setText("Busqueda sorteos");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+        getContentPane().add(nameRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
+        getContentPane().add(typeRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
+        getContentPane().add(emissionRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
+        getContentPane().add(pricesRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        raffleTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -70,16 +125,9 @@ public class Busquedasorteos extends javax.swing.JFrame {
                 "Nombre del sorteo", "Fecha del sorteo", "Tipo de sorteo"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(raffleTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 70));
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 140, 30));
 
         jButton1.setText("ver detalle del sorteo");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, -1, -1));
@@ -100,24 +148,21 @@ public class Busquedasorteos extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 230, 100));
+        getContentPane().add(raffleName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 150, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    Gestioncliente usuario= new Gestioncliente();
-    usuario.setVisible(true);
-    this.setVisible(false);        // TODO add your handling code here:
+        Gestioncliente usuario = new Gestioncliente();
+        usuario.setVisible(true);
+        this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    Sorteosvistos usuario= new Sorteosvistos();
-    usuario.setVisible(true);
-    this.setVisible(false);        // TODO add your handling code here:
+        Sorteosvistos usuario = new Sorteosvistos();
+        usuario.setVisible(true);
+        this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -156,17 +201,17 @@ public class Busquedasorteos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> emissionRa;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JComboBox<String> nameRa;
+    private javax.swing.JComboBox<String> pricesRa;
+    private javax.swing.JTextField raffleName;
+    private javax.swing.JTable raffleTable;
+    private javax.swing.JComboBox<String> typeRa;
     // End of variables declaration//GEN-END:variables
 }

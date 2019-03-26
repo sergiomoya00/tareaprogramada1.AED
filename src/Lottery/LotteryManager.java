@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-
 /**
  *
  * @author samoy
@@ -22,15 +21,63 @@ public class LotteryManager {
     List<Tickets> tickets = new SimpleLinkeList<>();
     List<Raffle> raffles = new DoubleLinkedList<>();
     List<Client> clients = new LQueue<>();
-    List<Loteria> loterias = new LQueue<>();
+    List<Loteria> loterias = new SimpleLinkeList<>();
     List<Lotto> lottos = new SimpleLinkeList<>();
     List<Bingo> bingos = new ArrayList<>();
     List<Tiempos> tiemposs = new ArrayList<>();
-    
+
     public static final LotteryManager instance = new LotteryManager();
 
     public static LotteryManager getInstance() {
         return instance;
+    }
+
+    public void removeLoteria(int index) {
+        loterias.remove(index);
+    }
+
+    public Collection<Loteria> getLoterias() {
+        return loterias;
+    }
+
+    public void addLoteria(Loteria newLoteria) {
+        this.loterias.add(newLoteria);
+    }
+
+    public void removeLotto(int index) {
+        lottos.remove(index);
+    }
+
+    public Collection<Lotto> getLotto() {
+        return lottos;
+    }
+
+    public void addLotto(Lotto newLotto) {
+        this.lottos.add(newLotto);
+    }
+
+    public void removeBingo(int index) {
+        bingos.remove(index);
+    }
+
+    public Collection<Bingo> getBingos() {
+        return bingos;
+    }
+
+    public void addBingo(Bingo newBingo) {
+        this.bingos.add(newBingo);
+    }
+
+    public void removeTiempos(int index) {
+        tiemposs.remove(index);
+    }
+
+    public Collection<Tiempos> getTiempos() {
+        return tiemposs;
+    }
+
+    public void addTiempos(Tiempos newTiempos) {
+        this.tiemposs.add(newTiempos);
     }
 
     public void addClient(Client client) {
@@ -40,7 +87,7 @@ public class LotteryManager {
     public void removeCustomer(Client client) {
         clients.remove(client);
     }
- 
+
     public Collection<Client> getClient() {
         return clients;
     }

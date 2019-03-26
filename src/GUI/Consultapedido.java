@@ -1,13 +1,15 @@
 package GUI;
 
-
+import Lottery.LotteryManager;
+import Lottery.Tickets;
+import javax.swing.table.DefaultTableModel;
+import sun.security.krb5.internal.Ticket;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Fanny Brenes
@@ -17,8 +19,25 @@ public class Consultapedido extends javax.swing.JFrame {
     /**
      * Creates new form Consultapedido
      */
+    private Tickets ticket;
+
+    public Tickets getTicket() {
+        return ticket;
+    }
+
     public Consultapedido() {
         initComponents();
+    }
+
+    public void refresh() {
+        DefaultTableModel model = ((DefaultTableModel) ticketTable.getModel());
+        model.setRowCount(0);
+        for (Tickets ticket : LotteryManager.getInstance().getTickets()) {
+            model.addRow(new Object[]{
+                ticket.getClientName(), ticket.getNumber(), ticket.getRaffleType(), ticket.getPrice()
+            });
+
+        }
     }
 
     /**
@@ -32,7 +51,7 @@ public class Consultapedido extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        ticketTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -44,7 +63,7 @@ public class Consultapedido extends javax.swing.JFrame {
         jLabel1.setText("Consultar pedido");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        ticketTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -55,7 +74,7 @@ public class Consultapedido extends javax.swing.JFrame {
                 "Nombre cliente", "Numero o combinacion", "Tipo de sorteo", "Precio", "Fecha del sorteo"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(ticketTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 590, 140));
 
@@ -68,6 +87,11 @@ public class Consultapedido extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, -1, -1));
 
         jButton2.setText("Eliminar pedidos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, -1, -1));
 
         jButton3.setText("Terminar pedido");
@@ -86,10 +110,15 @@ public class Consultapedido extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    Finalpedido usuario= new Finalpedido();
-    usuario.setVisible(true);
-    this.setVisible(false);        // TODO add your handling code here:
+        Finalpedido usuario = new Finalpedido();
+        usuario.setVisible(true);
+        this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        LotteryManager.getInstance().removeTickets(this.ticketTable.getSelectedRow());
+        refresh();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,6 +161,6 @@ public class Consultapedido extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable ticketTable;
     // End of variables declaration//GEN-END:variables
 }

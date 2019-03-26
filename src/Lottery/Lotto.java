@@ -12,17 +12,42 @@ import java.util.Random;
 public class Lotto {
 
     private int acumulado=1000000;
-    private String date;
+    private String lottodate,emissiondate,name;
     private int winnernumb;
     private int digito1,digito2,digito3,digito4,digito5,digito6,digito7;
     public Lotto(int acumulado, String date, int winner) {
         this.acumulado = acumulado;
-        this.date = date;
+        this.lottodate = date;
         this.winnernumb = winner;
     }
+    public Lotto(){}
 
     public int getAcumulado() {
         return acumulado;
+    }
+
+    public String getLottodate() {
+        return lottodate;
+    }
+
+    public void setLottodate(String lottodate) {
+        this.lottodate = lottodate;
+    }
+
+    public String getEmissiondate() {
+        return emissiondate;
+    }
+
+    public void setEmissiondate(String emissiondate) {
+        this.emissiondate = emissiondate;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setAcumulado(int acumulado) {
@@ -30,11 +55,11 @@ public class Lotto {
     }
 
     public String getDate() {
-        return date;
+        return lottodate;
     }
 
     public void setDate(String date) {
-        this.date = date;
+        this.lottodate = date;
     }
 
     public int getWinnernumb() {

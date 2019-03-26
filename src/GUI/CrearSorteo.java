@@ -112,6 +112,10 @@ public class CrearSorteo extends javax.swing.JFrame {
     Random rand = new Random();
     int code = rand.nextInt(100);
     this.raffle.setCode(code);
+    if (comboraffle.getSelectedIndex()==0){}
+    if (comboraffle.getSelectedIndex()==1){}
+    if (comboraffle.getSelectedIndex()==2){}
+    if (comboraffle.getSelectedIndex()==3){}
     LotteryManager.getInstance().addRaffle(raffle);
     Gestiónsorteos usuario= new Gestiónsorteos();
     usuario.setVisible(true);

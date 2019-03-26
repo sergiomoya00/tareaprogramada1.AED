@@ -1,5 +1,10 @@
 package GUI;
 
+import Lottery.LotteryManager;
+import Lottery.Raffle;
+import Lottery.Tickets;
+import javax.swing.table.DefaultTableModel;
+
 
 
 /*
@@ -13,12 +18,23 @@ package GUI;
  * @author Fanny Brenes
  */
 public class Pedidocliente extends javax.swing.JFrame {
-
+    DefaultTableModel tabla=new DefaultTableModel();
+    Tickets newticket=new Tickets();
     /**
      * Creates new form Pedidocliente
      */
+    private void Updateraffle(){
+        
+    DefaultTableModel model= ((DefaultTableModel) Tablaticket.getModel());
+    model.setRowCount(0);
+    for (Tickets ticket: LotteryManager.getInstance().getTickets()){
+        model.addRow(new Object[]{
+            ticket.getClientName(),ticket.getRaffleType(),ticket.getNumber(),ticket.getPrice()
+        });
+    }}
     public Pedidocliente() {
         initComponents();
+        Updateraffle();
     }
 
     /**
@@ -32,12 +48,12 @@ public class Pedidocliente extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        combotype = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tablaticket = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -47,14 +63,15 @@ public class Pedidocliente extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
 
         jLabel2.setText("Sorteo");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Loteria", "Lotto", "Bingo", "Tiempos" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, -1, -1));
-
-        jLabel3.setText("Numero o combinación");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 110, -1));
+        combotype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Loteria", "Lotto", "Bingo", "Tiempos" }));
+        combotype.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combotypeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(combotype, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 180, -1));
 
         jButton1.setText("Consultar pedidos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +82,11 @@ public class Pedidocliente extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, -1, -1));
 
         jButton2.setText("Ordenar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, -1, -1));
 
         jButton3.setText("Atrás");
@@ -74,6 +96,21 @@ public class Pedidocliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        Tablaticket.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nombre del emisor", "Tipo de sorteo", "Numero o combinacion", "Precio"
+            }
+        ));
+        jScrollPane1.setViewportView(Tablaticket);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 530, 210));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -89,6 +126,14 @@ public class Pedidocliente extends javax.swing.JFrame {
     usuario.setVisible(true);
     this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void combotypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combotypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combotypeActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,13 +171,13 @@ public class Pedidocliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Tablaticket;
+    private javax.swing.JComboBox<String> combotype;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

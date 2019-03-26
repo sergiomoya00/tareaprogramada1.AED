@@ -14,8 +14,13 @@ public class NodeSimpleLinkedList<T> {
         this.next = next;
         this.value = value;
     }
-
+    public NodeSimpleLinkedList(T value) {
+        this.next = null;
+        this.value = value;
+    }
     public NodeSimpleLinkedList() {
+       this.value=null;
+       this.next=null;
     }
 
     public NodeSimpleLinkedList<T> getNext() {

@@ -5,7 +5,9 @@
  */
 package Lottery;
 
-import Collections.*;
+import Collections.LQueue;
+import Collections.SimpleLinkeList;
+import Collections.DoubleLinkedList;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -38,8 +40,8 @@ public class LotteryManager {
         return clients;
     }
 
-    public void addClient(Client newClient) {
-        this.clients.add(newClient);
+    public void addClient(Client client) {
+        this.clients.add(client);
     }
 
     public void removeRaffle(int index) {

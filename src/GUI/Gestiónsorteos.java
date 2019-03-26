@@ -1,4 +1,4 @@
-package InterfazGrafica;
+package GUI;
 
 
 

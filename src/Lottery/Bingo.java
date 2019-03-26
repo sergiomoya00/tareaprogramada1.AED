@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Lottery;
-
+import java.util.Random;
 /**
  *
  * @author samoy
@@ -12,11 +12,12 @@ package Lottery;
 public class Bingo {
 
     private String date;
-    private int winner;
+    private int winnernumb;
+    private int numero1,numero2,numero3,numero4,numero5,numero6,numero7;
 
     public Bingo(String date, int winner) {
         this.date = date;
-        this.winner = winner;
+        this.winnernumb = winner;
     }
 
     public String getDate() {
@@ -28,12 +29,21 @@ public class Bingo {
     }
 
     public int getWinner() {
-        return winner;
+        return winnernumb;
     }
 
     public void setWinner(int winner) {
-        this.winner = winner;
+        this.winnernumb = winner;
     }
-    
+    public void Bingowinner(){
+    Random rand = new Random();
+    numero1 = rand.nextInt(100);
+    numero2 = rand.nextInt(100);
+    numero3 = rand.nextInt(100);
+    numero4 = rand.nextInt(100);
+    numero5 = rand.nextInt(100);
+    numero6 = rand.nextInt(100);
+    numero7 = rand.nextInt(100);
+    }
     
 }

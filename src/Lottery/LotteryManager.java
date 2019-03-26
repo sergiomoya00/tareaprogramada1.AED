@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+
 /**
  *
  * @author samoy
@@ -25,23 +26,23 @@ public class LotteryManager {
     List<Lotto> lottos = new SimpleLinkeList<>();
     List<Bingo> bingos = new ArrayList<>();
     List<Tiempos> tiemposs = new ArrayList<>();
-
-    private static LotteryManager instance;
+    
+    public static final LotteryManager instance = new LotteryManager();
 
     public static LotteryManager getInstance() {
         return instance;
     }
 
-    public void removeClient(int index) {
-        clients.remove(index);
-    }
-
-    public Collection<Client> getClients() {
-        return clients;
-    }
-
     public void addClient(Client client) {
         this.clients.add(client);
+    }
+
+    public void removeCustomer(Client client) {
+        clients.remove(client);
+    }
+ 
+    public Collection<Client> getClient() {
+        return clients;
     }
 
     public void removeRaffle(int index) {

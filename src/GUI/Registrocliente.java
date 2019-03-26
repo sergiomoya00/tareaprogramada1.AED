@@ -1,6 +1,8 @@
 package GUI;
+
 import Lottery.Client;
 import Lottery.LotteryManager;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,15 +14,19 @@ import Lottery.LotteryManager;
  * @author Fanny Brenes
  */
 public class Registrocliente extends javax.swing.JFrame {
-   private Client client;
+
+    private Client client;
+
     /**
      * Creates new form PedidoTicket
+     *
      * @return
      */
-   public Client getClient(){
-   return client;
-   }   
-   public Registrocliente() {
+    public Client getClient() {
+        return client;
+    }
+
+    public Registrocliente() {
         initComponents();
     }
 
@@ -124,26 +130,26 @@ public class Registrocliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    Entrada usuario= new Entrada();
-    usuario.setVisible(true);
-    this.setVisible(false);          // TODO add your handling code here:
+        Entrada usuario = new Entrada();
+        usuario.setVisible(true);
+        this.setVisible(false);          // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    this.client =new Client();
-    this.client.setAddress(txtaddress.getText());
-    this.client.setEmail(txtemail.getText());
-    this.client.setName(txtname.getText());
-    this.client.setBirthdate(txtbirth.getText());
-    int id = Integer.parseInt(txtid.getText());
-    int phone = Integer.parseInt(txtphone.getText());
-    this.client.setId(id);
-    this.client.setPhone(phone);
-    LotteryManager.getInstance().addClient(client);
-    Gestioncliente usuario= new Gestioncliente();
-    usuario.setVisible(true);
-    this.setVisible(false);
-           // TODO add your handling code here:
+        this.client = new Client();
+        this.client.setAddress(txtaddress.getText());
+        this.client.setEmail(txtemail.getText());
+        this.client.setName(txtname.getText());
+        this.client.setBirthdate(txtbirth.getText());
+        int id = Integer.parseInt(txtid.getText());
+        int phone = Integer.parseInt(txtphone.getText());
+        this.client.setId(id);
+        this.client.setPhone(phone);
+        LotteryManager.getInstance().addClient(client);
+        Gestioncliente usuario = new Gestioncliente();
+        usuario.setVisible(true);
+        this.setVisible(false);
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed

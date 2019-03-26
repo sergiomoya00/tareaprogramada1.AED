@@ -27,6 +27,12 @@ public class Pedidocliente extends javax.swing.JFrame {
         
     DefaultTableModel model= ((DefaultTableModel) Tablaticket.getModel());
     model.setRowCount(0);
+    if (combotype.getSelectedIndex()==0){
+    
+    }
+    if (combotype.getSelectedIndex()==1){}
+    if (combotype.getSelectedIndex()==2){}
+    if (combotype.getSelectedIndex()==3){}
     for (Tickets ticket: LotteryManager.getInstance().getTickets()){
         model.addRow(new Object[]{
             ticket.getClientName(),ticket.getRaffleType(),ticket.getNumber(),ticket.getPrice()
@@ -132,7 +138,7 @@ public class Pedidocliente extends javax.swing.JFrame {
     }//GEN-LAST:event_combotypeActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+            // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

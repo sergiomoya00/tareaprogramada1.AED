@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Lottery;
-
+import java.util.Random;
 /**
  *
  * @author samoy
@@ -13,12 +13,19 @@ public class Tiempos {
 
     private int principal;
     private int jugada;
+    private int winner;
 
     public Tiempos(int principal, int jugada) {
         this.principal = principal;
         this.jugada = jugada;
     }
+    public int getWinner() {
+        return winner;
+    }
 
+    public void setWinner(int winner) {
+        this.winner = winner;
+    }
     public int getPrincipal() {
         return principal;
     }
@@ -34,5 +41,9 @@ public class Tiempos {
     public void setJugada(int jugada) {
         this.jugada = jugada;
     }
-        
+    public void Tiemposwinner(){
+    Random rand = new Random();
+    jugada = rand.nextInt(100);
+    principal = rand.nextInt(100);
+    }
 }

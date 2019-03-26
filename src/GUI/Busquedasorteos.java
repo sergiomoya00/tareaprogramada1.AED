@@ -108,11 +108,11 @@ public class Busquedasorteos extends javax.swing.JFrame {
 
         getContentPane().add(nameRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
-        getContentPane().add(typeRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
+        getContentPane().add(typeRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, -1, -1));
 
-        getContentPane().add(emissionRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
+        getContentPane().add(emissionRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, -1, -1));
 
-        getContentPane().add(pricesRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
+        getContentPane().add(pricesRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
 
         raffleTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

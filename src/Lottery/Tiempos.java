@@ -10,7 +10,8 @@ import java.util.Random;
  * @author samoy
  */
 public class Tiempos {
-
+    
+    private String name,dateemission,datetiempos;
     private int principal;
     private int jugada;
     private int winner;
@@ -18,6 +19,32 @@ public class Tiempos {
     public Tiempos(int principal, int jugada) {
         this.principal = principal;
         this.jugada = jugada;
+    }
+    public Tiempos(){}
+    
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDateemission() {
+        return dateemission;
+    }
+
+    public void setDateemission(String dateemission) {
+        this.dateemission = dateemission;
+    }
+
+    public String getDatetiempos() {
+        return datetiempos;
+    }
+
+    public void setDatetiempos(String datetiempos) {
+        this.datetiempos = datetiempos;
     }
     public int getWinner() {
         return winner;

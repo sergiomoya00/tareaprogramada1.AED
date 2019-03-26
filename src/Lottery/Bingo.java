@@ -11,25 +11,49 @@ import java.util.Random;
  */
 public class Bingo {
 
-    private String date;
+    private String datebingo,name,dateemission;
     private int winnernumb;
     private int numero1,numero2,numero3,numero4,numero5,numero6,numero7,numero8,numero9;
 
     public Bingo(String date, int winner) {
-        this.date = date;
+        this.datebingo = date;
         this.winnernumb = winner;
     }
-
-    public String getDate() {
-        return date;
+    public Bingo(){}
+    
+    public String getName() {
+        return name;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getdatebingo() {
+        return datebingo;
+    }
+
+    public void setdatebingo(String date) {
+        this.datebingo = date;
     }
 
     public int getWinner() {
         return winnernumb;
+    }
+
+    public String getDatebingo() {
+        return datebingo;
+    }
+
+    public void setDatebingo(String datebingo) {
+        this.datebingo = datebingo;
+    }
+
+    public String getDateemission() {
+        return dateemission;
+    }
+
+    public void setDateemission(String dateemission) {
+        this.dateemission = dateemission;
     }
 
     public void setWinner(int winner) {

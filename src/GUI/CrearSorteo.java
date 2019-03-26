@@ -35,6 +35,12 @@ public class CrearSorteo extends javax.swing.JFrame {
     public Lotto getLotto(){
        return lotto;
     }
+     public Bingo getBingo(){
+       return bingo;
+    }
+     public Tiempos getTiempos(){
+       return tiempos;
+    }
     /**
      * Creates new form CrearSorteo
      */
@@ -126,8 +132,20 @@ public class CrearSorteo extends javax.swing.JFrame {
     this.lotto.setEmissiondate(txtemision.getText());
     LotteryManager.getInstance().addLotto(lotto);
     }
-    if (comboraffle.getSelectedIndex()==2){}
-    if (comboraffle.getSelectedIndex()==3){}
+    if (comboraffle.getSelectedIndex()==2){
+    this.bingo=new Bingo();
+    this.bingo.setName(txtname.getText());
+    this.bingo.setDatebingo(txtdate.getText());
+    this.bingo.setDateemission(txtemision.getText());
+    LotteryManager.getInstance().addBingo(bingo);
+    }
+    if (comboraffle.getSelectedIndex()==3){
+    this.tiempos=new Tiempos();
+    this.tiempos.setName(txtname.getText());
+    this.tiempos.setDateemission(txtemision.getText());
+    this.tiempos.setDatetiempos(txtdate.getText());
+    LotteryManager.getInstance().addTiempos(tiempos);
+    }
     LotteryManager.getInstance().addRaffle(raffle);
     Gestiónsorteos usuario= new Gestiónsorteos();
     usuario.setVisible(true);

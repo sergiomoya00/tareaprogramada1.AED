@@ -25,7 +25,7 @@ public class LotteryManager {
     List<Bingo> bingos = new ArrayList<>();
     List<Tiempos> tiemposs = new ArrayList<>();
     
-    private static LotteryManager instance;
+    private static final LotteryManager instance = new LotteryManager();
 
     public static LotteryManager getInstance() {
         return instance;

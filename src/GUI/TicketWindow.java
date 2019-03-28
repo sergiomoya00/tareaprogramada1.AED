@@ -6,6 +6,7 @@
 package GUI;
 
 import Lottery.LotteryManager;
+import Lottery.RaffleType;
 import Lottery.Tickets;
 
 /**
@@ -15,17 +16,30 @@ import Lottery.Tickets;
 public class TicketWindow extends javax.swing.JFrame {
 
     private Tickets ticket;
-    
-    public Tickets getTickets(){
+
+    public Tickets getTickets() {
         return ticket;
     }
+
     /**
      * Creates new form TicketWindow
      */
     public TicketWindow() {
         initComponents();
+
+        this.typeTxt.addItem("Tipos de rifas");
+        for (RaffleType topic : RaffleType.values()) {
+            typeTxt.addItem(topic.name());
+        }
     }
-    
+
+    public void refreshT() {
+        
+        String topicName = (String) typeTxt.getSelectedItem();
+        if (typeTxt.getSelectedIndex() == 0) {
+            topicName = null;
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

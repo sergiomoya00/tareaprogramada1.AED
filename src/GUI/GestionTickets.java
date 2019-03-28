@@ -26,6 +26,7 @@ public class GestionTickets extends javax.swing.JFrame {
      */
     public GestionTickets() {
         initComponents();
+        refreshTickets();
     }
 
     public void refreshTickets() {
@@ -124,7 +125,14 @@ public class GestionTickets extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    TicketWindow usuario= new TicketWindow();
+    usuario.setVisible(true);
+    usuario.addWindowStateListener(new java.awt.event.WindowAdapter() {
+        @Override
+    public void windowDeactivated(java.awt.event.WindowEvent windowEvent){
+    refreshTickets();
+    }    
+});        // TODO add your ha        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

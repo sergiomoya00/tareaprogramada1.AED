@@ -156,6 +156,9 @@ public class TicketWindow extends javax.swing.JFrame {
         this.ticket.setNumber(num);
         this.ticket.setPrice(prices);
         LotteryManager.getInstance().addTickets(ticket);
+        GestionTickets usuario = new GestionTickets();
+        usuario.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -202,6 +202,7 @@ public class Pedidocliente extends javax.swing.JFrame {
            mamaticket.setTransmitterName(emissorname);
            mamaticket.setPrice(price);
            mamaticket.setAge(age);
+           
              
            LotteryManager.getInstance().addTickets(mamaticket);
            

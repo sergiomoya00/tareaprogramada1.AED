@@ -25,6 +25,7 @@ public class LotteryManager {
     List<Lotto> lottos = new SimpleLinkeList<>();
     List<Bingo> bingos = new ArrayList<>();
     List<Tiempos> tiemposs = new ArrayList<>();
+    List<Order> orders = new LQueue<>();
 
     public static final LotteryManager instance;
 
@@ -52,6 +53,18 @@ public class LotteryManager {
                 setCode(34);
             }
         });
+    }
+    
+    public void addOrder(Order order) {
+        this.orders.add(order);
+    }
+
+    public void removeOrder(Order order) {
+        orders.remove(order);
+    }
+
+    public Collection<Order> getOrder() {
+        return orders;
     }
 
     public void removeLoteria(int index) {

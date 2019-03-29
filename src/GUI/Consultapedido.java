@@ -22,10 +22,11 @@ public class Consultapedido extends javax.swing.JFrame {
      */
     private Tickets ticket;
     private Order order;
-    
+
     public Tickets getTicket() {
         return ticket;
     }
+
     public Order getOrder() {
         return order;
     }
@@ -120,21 +121,21 @@ public class Consultapedido extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    Pedidocliente usuario = new Pedidocliente();
-    usuario.setVisible(true);
-    this.setVisible(false);           // TODO add your handling code here:
+        Pedidocliente usuario = new Pedidocliente();
+        usuario.setVisible(true);
+        this.setVisible(false);           // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         for (Tickets ticket : LotteryManager.getInstance().getTickets()) {
-        
-        this.order.setClientName(ticket.getClientName());
-        this.order.setNumber(ticket.getNum());
-        this.order.setPrice(ticket.getPrice());
-        this.order.setRaffleType(ticket.getRaffleType());
-        this.order.setAge(ticket.getAge());
-        
-        }        
+
+            this.order.setClientName(ticket.getClientName());
+            this.order.setNumber(ticket.getNum());
+            this.order.setPrice(ticket.getPrice());
+            this.order.setRaffleType(ticket.getRaffleType());
+            this.order.setAge(ticket.getAge());
+            LotteryManager.getInstance().addOrder(order);
+        }
         Finalpedido usuario = new Finalpedido();
         usuario.setVisible(true);
         this.setVisible(false);        // TODO add your handling code here:
@@ -146,7 +147,7 @@ public class Consultapedido extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    refresh();        // TODO add your handling code here:
+        refresh();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

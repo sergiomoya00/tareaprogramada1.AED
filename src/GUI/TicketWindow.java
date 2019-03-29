@@ -50,11 +50,18 @@ public class TicketWindow extends javax.swing.JFrame {
     public TicketWindow() {
         initComponents();
 
-     
+        this.typeTxt.addItem("Tipos de rifas");
+        for (RaffleType topic : RaffleType.values()) {
+            typeTxt.addItem(topic.name());
+        }
     }
 
     public void refreshT() {
         
+        String topicName = (String) typeTxt.getSelectedItem();
+        if (typeTxt.getSelectedIndex() == 0) {
+            topicName = null;
+        }
     }
 
     /**

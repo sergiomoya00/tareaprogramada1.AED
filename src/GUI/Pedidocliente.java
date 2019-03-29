@@ -183,7 +183,7 @@ public class Pedidocliente extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     DefaultTableModel model= ((DefaultTableModel) Tablaticket.getModel());
-    Client newclient=new Client();
+     Client newclient=new Client();
      String emissorname=(String)Tablaticket.getValueAt(Tablaticket.getSelectedRow(), 0);
      String raffletype=(String)Tablaticket.getValueAt(Tablaticket.getSelectedRow(), 1);
      String number=Tablaticket.getValueAt(Tablaticket.getSelectedRow(), 2).toString();

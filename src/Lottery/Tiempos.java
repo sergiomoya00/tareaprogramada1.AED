@@ -4,14 +4,16 @@
  * and open the template in the editor.
  */
 package Lottery;
+
 import java.util.Random;
+
 /**
  *
  * @author samoy
  */
 public class Tiempos {
-    
-    private String name,dateemission,datetiempos;
+
+    private String name, dateemission, datetiempos;
     private int principal;
     private int jugada;
     private int winner;
@@ -20,9 +22,10 @@ public class Tiempos {
         this.principal = principal;
         this.jugada = jugada;
     }
-    public Tiempos(){}
-    
-    
+
+    public Tiempos() {
+    }
+
     public String getName() {
         return name;
     }
@@ -46,6 +49,7 @@ public class Tiempos {
     public void setDatetiempos(String datetiempos) {
         this.datetiempos = datetiempos;
     }
+
     public int getWinner() {
         return winner;
     }
@@ -53,6 +57,7 @@ public class Tiempos {
     public void setWinner(int winner) {
         this.winner = winner;
     }
+
     public int getPrincipal() {
         return principal;
     }
@@ -68,9 +73,10 @@ public class Tiempos {
     public void setJugada(int jugada) {
         this.jugada = jugada;
     }
-    public void Tiemposwinner(){
-    Random rand = new Random();
-    jugada = rand.nextInt(100);
-    principal = rand.nextInt(100);
+
+    public void Tiemposwinner() {
+        Random rand = new Random();
+        jugada = rand.nextInt(100);
+        principal = rand.nextInt(100);
     }
 }

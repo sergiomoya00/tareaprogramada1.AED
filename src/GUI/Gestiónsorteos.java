@@ -67,7 +67,7 @@ public class Gestiónsorteos extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Nombre del Sorteo", "Código", "Tipo", "Emisiones", "Fecha del sorteo"
+                "Nombre del Sorteo", "Código", "Tipo", "Fechade  Emisión", "Fecha del sorteo"
             }
         ));
         jScrollPane1.setViewportView(Tablasorteos);

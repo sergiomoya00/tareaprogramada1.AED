@@ -15,13 +15,23 @@ public class Tiempos {
     private int principal;
     private int jugada;
     private int winner;
+    private Tickets Ticket;
 
+ 
     public Tiempos(int principal, int jugada) {
         this.principal = principal;
         this.jugada = jugada;
     }
     public Tiempos(){}
     
+    public Tickets getTicket() {
+        return Ticket;
+    }
+
+    public void setTicket(Tickets Ticket) {
+        this.Ticket = Ticket;
+    }
+
     
     public String getName() {
         return name;

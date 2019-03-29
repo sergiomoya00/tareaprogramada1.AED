@@ -13,6 +13,8 @@ public class Loteria {
 
     private String date,name,emissiondate,loteriadate;
     private int winner;
+    private Tickets ticket;
+
 
     public Loteria(String date, int winner) {
         this.date = date;
@@ -20,6 +22,13 @@ public class Loteria {
     }
 
     public Loteria() {
+    }
+    public Tickets getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(Tickets ticket) {
+        this.ticket = ticket;
     }
      public String getName() {
         return name;

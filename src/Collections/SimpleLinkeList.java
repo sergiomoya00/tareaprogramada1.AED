@@ -131,7 +131,7 @@ public class SimpleLinkeList<T> implements List<T> {
 
     }
 
-    @Override
+    
     public T get(int index) {
         NodeSimpleLinkedList<T> current = head;
         while (index-- > 0) {

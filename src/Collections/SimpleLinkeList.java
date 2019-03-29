@@ -14,6 +14,8 @@ public class SimpleLinkeList<T> implements List<T> {
 
     NodeSimpleLinkedList<T> head;
     private int size;
+    
+    
 
     @Override
     public int size() {

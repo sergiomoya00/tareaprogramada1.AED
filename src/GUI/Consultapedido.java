@@ -22,6 +22,8 @@ public class Consultapedido extends javax.swing.JFrame {
      */
     private Tickets ticket;
     private Order order;
+    
+    public int contador=0;
 
     public Tickets getTicket() {
         return ticket;
@@ -127,7 +129,7 @@ public class Consultapedido extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        for (Tickets ticket : LotteryManager.getInstance().getTickets()) {
+        for (Tickets ticket : LotteryManager.getInstance().getTicket(contador)) {
 
             this.order.setClientName(ticket.getClientName());
             this.order.setNumber(ticket.getNum());

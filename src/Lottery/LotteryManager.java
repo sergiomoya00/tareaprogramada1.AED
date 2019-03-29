@@ -146,6 +146,10 @@ public class LotteryManager {
     public Collection<Tickets> getTickets() {
         return tickets;
     }
+    
+    public void getTicket(int index){
+        this.tickets.get(index);
+    }
 
     public void addTickets(Tickets newTickets) {
         this.tickets.add(newTickets);

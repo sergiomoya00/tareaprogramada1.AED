@@ -190,7 +190,7 @@ public class Pedidocliente extends javax.swing.JFrame {
      String pric=Tablaticket.getValueAt(Tablaticket.getSelectedRow(), 3).toString();
      int price=Integer.parseInt(pric);
      LotteryManager.getInstance().removeTickets(this.Tablaticket.getSelectedRow());
-   
+     Updateraffle();
      
      for (Client client : LotteryManager.getInstance().getClient()) {
            Tickets mamaticket=new Tickets();
@@ -201,9 +201,10 @@ public class Pedidocliente extends javax.swing.JFrame {
            mamaticket.setRaffleType(raffletype);
            mamaticket.setTransmitterName(emissorname);
            mamaticket.setPrice(price);
-           
+           mamaticket.setAge(age);
              
-            LotteryManager.getInstance().addTickets(mamaticket); 
+           LotteryManager.getInstance().addTickets(mamaticket);
+           
             }
          
      

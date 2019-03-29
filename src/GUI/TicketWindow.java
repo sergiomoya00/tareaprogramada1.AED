@@ -9,6 +9,8 @@ import Lottery.Bingo;
 import Lottery.Loteria;
 import Lottery.LotteryManager;
 import Lottery.Lotto;
+import Lottery.RaffleType;
+
 import Lottery.Tickets;
 import Lottery.Tiempos;
 
@@ -36,16 +38,24 @@ public class TicketWindow extends javax.swing.JFrame {
      public Tiempos getTiempos(){
        return tiempos;
     }
-    public Tickets getTickets(){
+
+    public Tickets getTickets() {
+
         return ticket;
     }
+
     /**
      * Creates new form TicketWindow
      */
     public TicketWindow() {
         initComponents();
+
+     
     }
-    
+
+    public void refreshT() {
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,7 +74,7 @@ public class TicketWindow extends javax.swing.JFrame {
         trasmitterName = new javax.swing.JTextField();
         txtnum1 = new javax.swing.JTextField();
         priceTxt = new javax.swing.JTextField();
-        combotype = new javax.swing.JComboBox<>();
+        typeTxt = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtnum2 = new javax.swing.JTextField();
@@ -113,8 +123,8 @@ public class TicketWindow extends javax.swing.JFrame {
         getContentPane().add(txtnum1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 40, -1));
         getContentPane().add(priceTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 70, -1));
 
-        combotype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Loteria", "Lotto", "Bingo", "Tiempos" }));
-        getContentPane().add(combotype, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 238, -1));
+        typeTxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Loteria", "Lotto", "Bingo", "Tiempos" }));
+        getContentPane().add(typeTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 238, -1));
 
         jButton1.setText("Crear");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -171,10 +181,10 @@ public class TicketWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_trasmitterNameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String type = (String) this.combotype.getSelectedItem();
+        String type = (String) this.typeTxt.getSelectedItem();
         this.ticket = new Tickets();
         
-        if (combotype.getSelectedIndex()==0){
+        if (typeTxt.getSelectedIndex()==0){
         this.ticket.setTransmitterName(trasmitterName.getText());
         this.ticket.setRaffleType(type);
         int num1 = Integer.parseInt(txtnum1.getText());
@@ -184,7 +194,7 @@ public class TicketWindow extends javax.swing.JFrame {
         
         
         }
-        if (combotype.getSelectedIndex()==1){
+        if (typeTxt.getSelectedIndex()==1){
         this.ticket.setTransmitterName(trasmitterName.getText());
         this.ticket.setRaffleType(type);
         int num1 = Integer.parseInt(txtnum1.getText());
@@ -205,7 +215,7 @@ public class TicketWindow extends javax.swing.JFrame {
         this.ticket.setPrice(prices);
         
         }
-        if (combotype.getSelectedIndex()==2){
+        if (typeTxt.getSelectedIndex()==2){
         this.ticket.setTransmitterName(trasmitterName.getText());
         this.ticket.setRaffleType(type);
         int num1 = Integer.parseInt(txtnum1.getText());
@@ -230,7 +240,7 @@ public class TicketWindow extends javax.swing.JFrame {
         this.ticket.setPrice(prices);
         
         }
-        if (combotype.getSelectedIndex()==3){
+        if (typeTxt.getSelectedIndex()==3){
         this.ticket.setTransmitterName(trasmitterName.getText());
         this.ticket.setRaffleType(type);
         int num1 = Integer.parseInt(txtnum1.getText());
@@ -300,7 +310,6 @@ public class TicketWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> combotype;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -323,5 +332,6 @@ public class TicketWindow extends javax.swing.JFrame {
     private javax.swing.JTextField txtnum7;
     private javax.swing.JTextField txtnum8;
     private javax.swing.JTextField txtnum9;
+    private javax.swing.JComboBox<String> typeTxt;
     // End of variables declaration//GEN-END:variables
 }

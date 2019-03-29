@@ -1,6 +1,7 @@
 package GUI;
 
 import Lottery.LotteryManager;
+import Lottery.Order;
 import Lottery.Tickets;
 import javax.swing.table.DefaultTableModel;
 import sun.security.krb5.internal.Ticket;
@@ -20,9 +21,13 @@ public class Consultapedido extends javax.swing.JFrame {
      * Creates new form Consultapedido
      */
     private Tickets ticket;
-
+    private Order order;
+    
     public Tickets getTicket() {
         return ticket;
+    }
+    public Order getOrder() {
+        return order;
     }
 
     public Consultapedido() {
@@ -66,13 +71,13 @@ public class Consultapedido extends javax.swing.JFrame {
 
         Tablaticket.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nombre cliente", "Numero o combinacion", "Tipo de sorteo", "Precio", "Fecha del sorteo"
+                "Nombre cliente", "Numero o combinacion", "Tipo de sorteo", "Precio"
             }
         ));
         jScrollPane1.setViewportView(Tablaticket);
@@ -85,7 +90,7 @@ public class Consultapedido extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, -1));
 
         jButton2.setText("Eliminar pedidos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -115,10 +120,21 @@ public class Consultapedido extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    Pedidocliente usuario = new Pedidocliente();
+    usuario.setVisible(true);
+    this.setVisible(false);           // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        for (Tickets ticket : LotteryManager.getInstance().getTickets()) {
+        
+        this.order.setClientName(ticket.getClientName());
+        this.order.setNumber(ticket.getNum());
+        this.order.setPrice(ticket.getPrice());
+        this.order.setRaffleType(ticket.getRaffleType());
+        this.order.setAge(ticket.getAge());
+        
+        }        
         Finalpedido usuario = new Finalpedido();
         usuario.setVisible(true);
         this.setVisible(false);        // TODO add your handling code here:

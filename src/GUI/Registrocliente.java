@@ -65,7 +65,7 @@ public class Registrocliente extends javax.swing.JFrame {
         jLabel2.setText("Nombre");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
-        jLabel3.setText("Fecha de nacimiento");
+        jLabel3.setText("Edad");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         jLabel4.setText("Cedula");
@@ -140,7 +140,7 @@ public class Registrocliente extends javax.swing.JFrame {
         this.client.setAddress(txtaddress.getText());
         this.client.setEmail(txtemail.getText());
         this.client.setName(txtname.getText());
-        this.client.setBirthdate(txtbirth.getText());
+        this.client.setBirthdate(Integer.parseInt(txtbirth.getText()));
         int id = Integer.parseInt(txtid.getText());
         int phone = Integer.parseInt(txtphone.getText());
         this.client.setId(id);

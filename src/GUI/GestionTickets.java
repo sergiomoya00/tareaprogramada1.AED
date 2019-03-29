@@ -32,10 +32,50 @@ public class GestionTickets extends javax.swing.JFrame {
     public void refreshTickets() {
         DefaultTableModel model = ((DefaultTableModel) ticketTable.getModel());
         model.setRowCount(0);
-        for (Tickets ticket : LotteryManager.getInstance().getTickets()) {
+        
+          for (Tickets ticket : LotteryManager.getInstance().getTickets()) {
+            if (ticket.getRaffleType()=="Loteria"){
             model.addRow(new Object[]{
-                ticket.getTransmitterName(), ticket.getRaffleType(), ticket.getNumber(), ticket.getPrice()
+                ticket.getTransmitterName(), ticket.getRaffleType(), ticket.getNumber1(), ticket.getPrice()
+            });}
+            if (ticket.getRaffleType()=="Lotto"){
+            String num1=Integer.toString(ticket.getNumber1());
+            String num2=Integer.toString(ticket.getNumber2());
+            String num3=Integer.toString(ticket.getNumber3());
+            String num4=Integer.toString(ticket.getNumber4());
+            String num5=Integer.toString(ticket.getNumber5());
+            String num6=Integer.toString(ticket.getNumber6());
+            String num7=Integer.toString(ticket.getNumber7());
+            String combination=num1+","+num2+","+num3+","+num4+","+num5+","+num6+","+num7;
+            String price=Integer.toString(ticket.getPrice());
+            model.addRow(new Object[]{
+                ticket.getTransmitterName(), ticket.getRaffleType(), combination, price
             });
+        }
+            if (ticket.getRaffleType()=="Bingo"){
+            String num1=Integer.toString(ticket.getNumber1());
+            String num2=Integer.toString(ticket.getNumber2());
+            String num3=Integer.toString(ticket.getNumber3());
+            String num4=Integer.toString(ticket.getNumber4());
+            String num5=Integer.toString(ticket.getNumber5());
+            String num6=Integer.toString(ticket.getNumber6());
+            String num7=Integer.toString(ticket.getNumber7());
+            String num8=Integer.toString(ticket.getNumber8());
+            String num9=Integer.toString(ticket.getNumber9());
+            String combination=num1+","+num2+","+num3+","+num4+","+num5+","+num6+","+num7+","+num8+","+num9;
+            model.addRow(new Object[]{
+                ticket.getTransmitterName(), ticket.getRaffleType(), combination, ticket.getPrice()
+            });
+        }
+            if (ticket.getRaffleType()=="Tiempos"){
+            String num1=Integer.toString(ticket.getNumber1());
+            String num2=Integer.toString(ticket.getNumber2());
+            String combination=num1+","+num2;
+            model.addRow(new Object[]{
+                ticket.getTransmitterName(), ticket.getRaffleType(), combination, ticket.getPrice()
+            });
+        }
+      
 
         }
     }
@@ -69,14 +109,14 @@ public class GestionTickets extends javax.swing.JFrame {
 
         ticketTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nombre del emisor", "Tipo de sorteo", "Numero o combinación elegida", "Precio", "Fecha del sorteo"
+                "Nombre del emisor", "Tipo de sorteo", "Numero o combinación elegida", "Precio"
             }
         ));
         jScrollPane1.setViewportView(ticketTable);

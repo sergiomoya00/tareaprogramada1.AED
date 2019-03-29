@@ -100,7 +100,7 @@ public class Gestionjps extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    GestionTickets usuario= new GestionTickets();
+     GestionTickets usuario= new GestionTickets();
     usuario.setVisible(true);
     this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed

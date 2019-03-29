@@ -13,12 +13,12 @@ public class Client {
 
     private String name;
     private int id;
-    private String birthdate;
+    private int birthdate;
     private String address;
     private int phone;
     private String email;
 
-    public Client(String name, int id, String birthdate, String address, int phone, String email) {
+    public Client(String name, int id, int birthdate, String address, int phone, String email) {
         this.name = name;
         this.id = id;
         this.birthdate = birthdate;
@@ -46,11 +46,11 @@ public class Client {
         this.id = id;
     }
 
-    public String getBirthdate() {
+    public int getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(String birthdate) {
+    public void setBirthdate(int birthdate) {
         this.birthdate = birthdate;
     }
 

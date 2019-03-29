@@ -1,5 +1,6 @@
 package GUI;
 
+import Lottery.Client;
 import Lottery.LotteryManager;
 import Lottery.Raffle;
 import Lottery.Tickets;
@@ -27,10 +28,50 @@ public class Pedidocliente extends javax.swing.JFrame {
         
     DefaultTableModel model= ((DefaultTableModel) Tablaticket.getModel());
     model.setRowCount(0);
-    for (Tickets ticket: LotteryManager.getInstance().getTickets()){
-        model.addRow(new Object[]{
-            ticket.getClientName(),ticket.getRaffleType(),ticket.getNumber(),ticket.getPrice()
-        });
+    for (Tickets ticket : LotteryManager.getInstance().getTickets()) {
+            if (combotype.getSelectedIndex()==0){
+                if (ticket.getRaffleType()=="Loteria"){
+            model.addRow(new Object[]{
+                ticket.getTransmitterName(), ticket.getRaffleType(), ticket.getNumber1(), ticket.getPrice()
+            });}}
+            if (combotype.getSelectedIndex()==1){
+            if (ticket.getRaffleType()=="Lotto"){
+            String num1=Integer.toString(ticket.getNumber1());
+            String num2=Integer.toString(ticket.getNumber2());
+            String num3=Integer.toString(ticket.getNumber3());
+            String num4=Integer.toString(ticket.getNumber4());
+            String num5=Integer.toString(ticket.getNumber5());
+            String num6=Integer.toString(ticket.getNumber6());
+            String num7=Integer.toString(ticket.getNumber7());
+            String combination=num1+","+num2+","+num3+","+num4+","+num5+","+num6+","+num7;
+            model.addRow(new Object[]{
+                ticket.getTransmitterName(), ticket.getRaffleType(), combination, ticket.getPrice()
+            });}}
+            if (combotype.getSelectedIndex()==2){
+            if (ticket.getRaffleType()=="Bingo"){
+            String num1=Integer.toString(ticket.getNumber1());
+            String num2=Integer.toString(ticket.getNumber2());
+            String num3=Integer.toString(ticket.getNumber3());
+            String num4=Integer.toString(ticket.getNumber4());
+            String num5=Integer.toString(ticket.getNumber5());
+            String num6=Integer.toString(ticket.getNumber6());
+            String num7=Integer.toString(ticket.getNumber7());
+            String num8=Integer.toString(ticket.getNumber8());
+            String num9=Integer.toString(ticket.getNumber9());
+            String combination=num1+","+num2+","+num3+","+num4+","+num5+","+num6+","+num7+","+num8+","+num9;
+            model.addRow(new Object[]{
+                ticket.getTransmitterName(), ticket.getRaffleType(), combination, ticket.getPrice()
+            });}}
+            if (combotype.getSelectedIndex()==3){
+            if (ticket.getRaffleType()=="Tiempos"){
+            String num1=Integer.toString(ticket.getNumber1());
+            String num2=Integer.toString(ticket.getNumber2());
+            String combination=num1+","+num2;
+            model.addRow(new Object[]{
+                ticket.getTransmitterName(), ticket.getRaffleType(), combination, ticket.getPrice()
+            });
+        }}
+      
     }}
     public Pedidocliente() {
         initComponents();
@@ -54,6 +95,7 @@ public class Pedidocliente extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tablaticket = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -79,7 +121,7 @@ public class Pedidocliente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, -1, -1));
 
         jButton2.setText("Ordenar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +129,7 @@ public class Pedidocliente extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, -1, -1));
 
         jButton3.setText("Atrás");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +154,14 @@ public class Pedidocliente extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 530, 210));
 
+        jButton4.setText("Actualizar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -132,8 +182,40 @@ public class Pedidocliente extends javax.swing.JFrame {
     }//GEN-LAST:event_combotypeActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-            // TODO add your handling code here:
+    DefaultTableModel model= ((DefaultTableModel) Tablaticket.getModel());
+     Client newclient=new Client();
+     String emissorname=(String)Tablaticket.getValueAt(Tablaticket.getSelectedRow(), 0);
+     String raffletype=(String)Tablaticket.getValueAt(Tablaticket.getSelectedRow(), 1);
+     String number=Tablaticket.getValueAt(Tablaticket.getSelectedRow(), 2).toString();
+     String pric=Tablaticket.getValueAt(Tablaticket.getSelectedRow(), 3).toString();
+     int price=Integer.parseInt(pric);
+     LotteryManager.getInstance().removeTickets(this.Tablaticket.getSelectedRow());
+   
+     
+     for (Client client : LotteryManager.getInstance().getClient()) {
+           Tickets mamaticket=new Tickets();
+           String name=client.getName();
+           int age=client.getBirthdate();
+           mamaticket.setClientName(name);
+           mamaticket.setNum(number);
+           mamaticket.setRaffleType(raffletype);
+           mamaticket.setTransmitterName(emissorname);
+           mamaticket.setPrice(price);
+           
+             
+            LotteryManager.getInstance().addTickets(mamaticket); 
+            }
+         
+     
+     
+    
+    
+   // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    Updateraffle();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,6 +258,7 @@ public class Pedidocliente extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -5,6 +5,7 @@
  */
 package Lottery;
 import java.util.Random;
+import Lottery.Tickets;
 /**
  *
  * @author samoy
@@ -14,12 +15,100 @@ public class Bingo {
     private String datebingo,name,dateemission;
     private int winnernumb;
     private int numero1,numero2,numero3,numero4,numero5,numero6,numero7,numero8,numero9;
+    private Tickets ticket;
 
     public Bingo(String date, int winner) {
         this.datebingo = date;
         this.winnernumb = winner;
     }
     public Bingo(){}
+     public int getWinnernumb() {
+        return winnernumb;
+    }
+
+    public void setWinnernumb(int winnernumb) {
+        this.winnernumb = winnernumb;
+    }
+
+    public int getNumero1() {
+        return numero1;
+    }
+
+    public void setNumero1(int numero1) {
+        this.numero1 = numero1;
+    }
+
+    public int getNumero2() {
+        return numero2;
+    }
+
+    public void setNumero2(int numero2) {
+        this.numero2 = numero2;
+    }
+
+    public int getNumero3() {
+        return numero3;
+    }
+
+    public void setNumero3(int numero3) {
+        this.numero3 = numero3;
+    }
+
+    public int getNumero4() {
+        return numero4;
+    }
+
+    public void setNumero4(int numero4) {
+        this.numero4 = numero4;
+    }
+
+    public int getNumero5() {
+        return numero5;
+    }
+
+    public void setNumero5(int numero5) {
+        this.numero5 = numero5;
+    }
+
+    public int getNumero6() {
+        return numero6;
+    }
+
+    public void setNumero6(int numero6) {
+        this.numero6 = numero6;
+    }
+
+    public int getNumero7() {
+        return numero7;
+    }
+
+    public void setNumero7(int numero7) {
+        this.numero7 = numero7;
+    }
+
+    public int getNumero8() {
+        return numero8;
+    }
+
+    public void setNumero8(int numero8) {
+        this.numero8 = numero8;
+    }
+
+    public int getNumero9() {
+        return numero9;
+    }
+
+    public void setNumero9(int numero9) {
+        this.numero9 = numero9;
+    }
+
+    public Tickets getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(Tickets ticket) {
+        this.ticket = ticket;
+    }
     
     public String getName() {
         return name;

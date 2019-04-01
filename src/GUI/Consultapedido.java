@@ -21,16 +21,11 @@ public class Consultapedido extends javax.swing.JFrame {
      * Creates new form Consultapedido
      */
     private Tickets ticket;
-    private Order order;
-    
-    public int contador=0;
+
+    public int contador = 0;
 
     public Tickets getTicket() {
         return ticket;
-    }
-
-    public Order getOrder() {
-        return order;
     }
 
     public Consultapedido() {
@@ -129,15 +124,24 @@ public class Consultapedido extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        for (Tickets ticket : LotteryManager.getInstance().getTicket(contador)) {
+        int size = LotteryManager.getInstance().getTickets().size();
+        Order order = new Order();
+        for (int i = 0; i < size; i++) {
+            Tickets current = LotteryManager.getInstance().getTicket(i);
+            String client = current.getClientName();
+            String number = current.getNum();
+            int price = current.getPrice();
+            String Raffletype = current.getRaffleType();
+            int age = current.getAge();
 
-            this.order.setClientName(ticket.getClientName());
-            this.order.setNumber(ticket.getNum());
-            this.order.setPrice(ticket.getPrice());
-            this.order.setRaffleType(ticket.getRaffleType());
-            this.order.setAge(ticket.getAge());
+            order.setClientName(client);
+            order.setNumber(number);
+            order.setPrice(price);
+            order.setRaffleType(Raffletype);
+            order.setAge(age);
             LotteryManager.getInstance().addOrder(order);
         }
+
         Finalpedido usuario = new Finalpedido();
         usuario.setVisible(true);
         this.setVisible(false);        // TODO add your handling code here:

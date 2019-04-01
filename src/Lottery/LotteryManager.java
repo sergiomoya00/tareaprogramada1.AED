@@ -54,7 +54,7 @@ public class LotteryManager {
             }
         });
     }
-    
+
     public void addOrder(Order order) {
         this.orders.add(order);
     }
@@ -146,10 +146,16 @@ public class LotteryManager {
     public Collection<Tickets> getTickets() {
         return tickets;
     }
-    
-    public void getTicket(int index){
-        this.tickets.get(index);
-    }
+
+    /**
+     * @return
+     * @param index
+     * @author samoy
+     */
+    public Tickets getTicket(int index) {  
+        Tickets ticket=tickets.get(index);
+        return ticket;
+        }
 
     public void addTickets(Tickets newTickets) {
         this.tickets.add(newTickets);

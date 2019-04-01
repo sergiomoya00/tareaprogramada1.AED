@@ -21,8 +21,11 @@ public class Consultapedido extends javax.swing.JFrame {
      * Creates new form Consultapedido
      */
     private Tickets ticket;
+    private Order order;
 
-    public int contador = 0;
+     public Order getOrder() {
+        return order;
+    }
 
     public Tickets getTicket() {
         return ticket;
@@ -125,8 +128,9 @@ public class Consultapedido extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int size = LotteryManager.getInstance().getTickets().size();
-        Order order = new Order();
+        
         for (int i = 0; i < size; i++) {
+            this.order = new Order();
             Tickets current = LotteryManager.getInstance().getTicket(i);
             String client = current.getClientName();
             String number = current.getNum();
@@ -134,11 +138,11 @@ public class Consultapedido extends javax.swing.JFrame {
             String Raffletype = current.getRaffleType();
             int age = current.getAge();
 
-            order.setClientName(client);
-            order.setNumber(number);
-            order.setPrice(price);
-            order.setRaffleType(Raffletype);
-            order.setAge(age);
+            this.order.setClientName(client);
+            this.order.setNumber(number);
+            this.order.setPrice(price);
+            this.order.setRaffleType(Raffletype);
+            this.order.setAge(age);
             LotteryManager.getInstance().addOrder(order);
         }
 

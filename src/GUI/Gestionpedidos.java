@@ -15,11 +15,13 @@ import javax.swing.table.DefaultTableModel;
  * @author Fanny Brenes
  */
 public class Gestionpedidos extends javax.swing.JFrame {
+
     private Order order;
 
     public Order getOrder() {
         return order;
     }
+
     /**
      * Creates new form Gestionpedidos
      */
@@ -27,14 +29,17 @@ public class Gestionpedidos extends javax.swing.JFrame {
         initComponents();
         refreshorder();
     }
+
     public void refreshorder() {
         DefaultTableModel model = ((DefaultTableModel) tablaconsultar.getModel());
         model.setRowCount(0);
-        
-          for (Order order : LotteryManager.getInstance().getOrder()) {
+
+        for (Order order : LotteryManager.getInstance().getOrder()) {
             model.addRow(new Object[]{
-                order.getClientName(), order.getRaffleType(), order.getAge(),order.getPrice(), order.getNumber()
-            });}}
+                order.getClientName(), order.getRaffleType(), order.getAge(), order.getPrice(), order.getNumber()
+            });
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,7 +88,7 @@ public class Gestionpedidos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    refreshorder();        // TODO add your handling code here:
+        refreshorder();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

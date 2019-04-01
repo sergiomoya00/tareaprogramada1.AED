@@ -127,7 +127,7 @@ public class Busquedasorteos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(raffleTable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 70));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 110));
 
         jButton1.setText("ver detalle del sorteo");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, -1, -1));

@@ -8,6 +8,7 @@ package Lottery;
 import Collections.LQueue;
 import Collections.SimpleLinkeList;
 import Collections.DoubleLinkedList;
+import com.sun.jmx.remote.internal.ArrayQueue;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -64,6 +65,10 @@ public class LotteryManager {
     }
 
     public Collection<Order> getOrder() {
+        return orders;
+    }
+    
+    public List<Order> getOrderrs(){
         return orders;
     }
 

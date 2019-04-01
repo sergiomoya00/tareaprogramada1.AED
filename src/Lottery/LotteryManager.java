@@ -167,7 +167,7 @@ public class LotteryManager {
     }
 
     public Collection<Raffle> searchRaffle(Raffle newRaffle) {
-        List<Raffle> results = new SimpleLinkeList<>();
+        List<Raffle> results = new ArrayList<>();
 
         boolean byName = newRaffle.getName() != null && newRaffle.getName().length() > 0;
         boolean byType = newRaffle.getType() != null && newRaffle.getType().length() > 0;

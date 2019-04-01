@@ -27,6 +27,7 @@ public class Busquedasorteos extends javax.swing.JFrame {
 
     public Busquedasorteos() {
         initComponents();
+        refreshSearch();
 
         this.nameRa.addItem("Nombre de rifas");
         for (Raffle raffle : LotteryManager.getInstance().getRaffles()) {
@@ -60,12 +61,12 @@ public class Busquedasorteos extends javax.swing.JFrame {
         if (emissionRa.getSelectedIndex() == 0) {
             emissionName = null;
         }
-        
+
         Raffle newRaffle = new Raffle();
         newRaffle.setType(topicName);
         String name = this.raffleName.getText();
         newRaffle.setName(name);
-        
+
         DefaultTableModel model = ((DefaultTableModel) raffleTable.getModel());
         model.setRowCount(0);
         for (Raffle raffle : LotteryManager.getInstance().searchRaffle(newRaffle)) {
@@ -74,7 +75,7 @@ public class Busquedasorteos extends javax.swing.JFrame {
             });
 
         }
-        
+
     }
 
     /**
@@ -106,10 +107,25 @@ public class Busquedasorteos extends javax.swing.JFrame {
         jLabel1.setText("Busqueda sorteos");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
 
+        nameRa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameRaActionPerformed(evt);
+            }
+        });
         getContentPane().add(nameRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
+        typeRa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeRaActionPerformed(evt);
+            }
+        });
         getContentPane().add(typeRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, -1, -1));
 
+        emissionRa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emissionRaActionPerformed(evt);
+            }
+        });
         getContentPane().add(emissionRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, -1, -1));
 
         getContentPane().add(pricesRa, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
@@ -164,6 +180,18 @@ public class Busquedasorteos extends javax.swing.JFrame {
         usuario.setVisible(true);
         this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void nameRaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameRaActionPerformed
+        refreshSearch();        // TODO add your handling code here:
+    }//GEN-LAST:event_nameRaActionPerformed
+
+    private void typeRaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeRaActionPerformed
+        refreshSearch();        // TODO add your handling code here:
+    }//GEN-LAST:event_typeRaActionPerformed
+
+    private void emissionRaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emissionRaActionPerformed
+        refreshSearch();        // TODO add your handling code here:
+    }//GEN-LAST:event_emissionRaActionPerformed
 
     /**
      * @param args the command line arguments

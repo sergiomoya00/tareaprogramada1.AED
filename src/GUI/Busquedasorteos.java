@@ -63,8 +63,9 @@ public class Busquedasorteos extends javax.swing.JFrame {
         
         Raffle newRaffle = new Raffle();
         newRaffle.setType(topicName);
+        newRaffle.setEmission(emissionName);
         String name = this.raffleName.getText();
-        newRaffle.setName(name);
+        newRaffle.setName(raffleName);
         
         DefaultTableModel model = ((DefaultTableModel) raffleTable.getModel());
         model.setRowCount(0);

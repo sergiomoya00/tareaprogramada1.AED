@@ -5,18 +5,84 @@
  */
 package GUI;
 
+import Lottery.LotteryManager;
+import Lottery.Raffle;
+import  Lottery.Bingo;
+import  Lottery.Loteria;
+import Lottery.Lotto;
+import  Lottery.Tiempos;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Fanny Brenes
  */
 public class Realizarsorteos extends javax.swing.JFrame {
-
+    private Raffle raffle;
+     private Lotto lotto;
+     private Loteria loteria;
+     private Bingo bingo;
+     private Tiempos tiempos;
+    
+     public Lotto getLotto() {
+        return lotto;
+    }
+      public Raffle getRaffle() {
+        return raffle;
+    }
+       public Loteria getLoteria() {
+        return loteria;
+    }
+        public Tiempos getTiempos() {
+        return tiempos;
+    }
+    public Bingo getBingo() {
+        return bingo;
+    }
     /**
      * Creates new form Realizarsorteos
      */
     public Realizarsorteos() {
         initComponents();
+         refreshSearch();
     }
+     private void refreshSearch() {
+     DefaultTableModel model = ((DefaultTableModel) raffletable.getModel());
+        model.setRowCount(0);
+        
+        
+        for (Raffle raffle : LotteryManager.getInstance().getRaffles()) {
+              if (combotype.getSelectedIndex()==0){
+                if (raffle.getType()=="Loteria"){
+                this.loteria=new Loteria();
+                
+                
+                
+            model.addRow(new Object[]{
+                 raffle.getName(),raffle.getDate(), raffle.getEmission(),this.loteria.getWinner()
+            });}}
+              if (combotype.getSelectedIndex()==1){
+                this.lotto=new Lotto();
+                this.lotto.lottowinner();
+                if (raffle.getType()=="Lotto"){
+            model.addRow(new Object[]{
+                 raffle.getName(),raffle.getDate(), raffle.getEmission(),this.lotto.getWinnernumb()
+            });}}
+              if (combotype.getSelectedIndex()==2){
+                if (raffle.getType()=="Bingo"){
+                this.bingo=new Bingo();
+                this.bingo.Bingowinner();
+            model.addRow(new Object[]{
+                 raffle.getName(),raffle.getDate(), raffle.getEmission(),this.bingo.getWinnernumb()
+            });}}
+              if (combotype.getSelectedIndex()==3){
+                if (raffle.getType()=="Tiempos"){
+                this.tiempos=new Tiempos();
+                this.tiempos.Tiemposwinner();
+            model.addRow(new Object[]{
+                 raffle.getName(),raffle.getDate(), raffle.getEmission(),this.tiempos.getWinner()
+            });}}
+     }}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,12 +95,13 @@ public class Realizarsorteos extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        combotype = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        raffletable = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -44,10 +111,10 @@ public class Realizarsorteos extends javax.swing.JFrame {
         jLabel2.setText("Realizar sorteo");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Loteria", "Lotto", "Raffle", "Tiempos" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 180, -1));
+        combotype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Loteria", "Lotto", "Bingo", "Tiempos" }));
+        getContentPane().add(combotype, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 180, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        raffletable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -58,9 +125,9 @@ public class Realizarsorteos extends javax.swing.JFrame {
                 "Nombre del sorteo", "Fecha del sorteo", "Tipo de sorteo", "Numero o combinación ganadora"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(raffletable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 530, 140));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 540, 140));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 290, 80));
 
         jLabel3.setText("Ganador");
@@ -74,6 +141,14 @@ public class Realizarsorteos extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
+        jButton2.setText("Actualizar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -82,6 +157,10 @@ public class Realizarsorteos extends javax.swing.JFrame {
     usuario.setVisible(true);
     this.setVisible(false);          // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    refreshSearch();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,13 +198,14 @@ public class Realizarsorteos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> combotype;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable raffletable;
     // End of variables declaration//GEN-END:variables
 }

@@ -159,6 +159,7 @@ public class Bingo {
     numero7 = rand.nextInt(100);
     numero8 = rand.nextInt(100);
     numero9 = rand.nextInt(100);
+    winnernumb=numero9+numero8*10+numero7*100+numero6*1000+numero5*10000+numero4*100000+numero3*1000000+numero2*10000000+numero1*100000000;
     }
     
 }

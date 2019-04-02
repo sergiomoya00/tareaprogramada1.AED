@@ -87,5 +87,6 @@ public class Tiempos {
         Random rand = new Random();
         jugada = rand.nextInt(100);
         principal = rand.nextInt(100);
+        winner=jugada*10+principal*10;
     }
 }

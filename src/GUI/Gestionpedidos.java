@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Lottery.Client;
 import Lottery.LotteryManager;
 import Lottery.Order;
 import Lottery.Tickets;
@@ -17,9 +18,14 @@ import javax.swing.table.DefaultTableModel;
 public class Gestionpedidos extends javax.swing.JFrame {
 
     private Order order;
-
+    private Client client;
+    
     public Order getOrder() {
         return order;
+    }
+    
+    public Client getClient(){
+        return client;
     }
 
     /**
@@ -85,13 +91,13 @@ public class Gestionpedidos extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, -1));
 
-        jButton2.setText("Atrás");
+        jButton2.setText("Atender");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -101,9 +107,10 @@ public class Gestionpedidos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    Gestionjps usuario= new Gestionjps();
-    usuario.setVisible(true);
-    this.setVisible(false);         // TODO add your handling code here:
+        NoticeClient noticed = new NoticeClient();
+        noticed.setVisible(true);
+        LotteryManager.getInstance().removeCustomer(client);
+        refreshorder();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

@@ -2,6 +2,7 @@ package GUI;
 
 import Lottery.LotteryManager;
 import Lottery.Order;
+import Lottery.Preorder;
 import Lottery.Tickets;
 import javax.swing.table.DefaultTableModel;
 import sun.security.krb5.internal.Ticket;
@@ -22,7 +23,11 @@ public class Consultapedido extends javax.swing.JFrame {
      */
     private Tickets ticket;
     private Order order;
-
+    private Preorder preorder;
+    
+    public Preorder getPreorder() {
+        return preorder;
+    }
      public Order getOrder() {
         return order;
     }
@@ -38,9 +43,9 @@ public class Consultapedido extends javax.swing.JFrame {
     public void refresh() {
         DefaultTableModel model = ((DefaultTableModel) Tablaticket.getModel());
         model.setRowCount(0);
-        for (Tickets ticket : LotteryManager.getInstance().getTickets()) {
+        for (Preorder preorder : LotteryManager.getInstance().getpreOrders()) {
             model.addRow(new Object[]{
-                ticket.getClientName(), ticket.getNum(), ticket.getRaffleType(), ticket.getPrice()
+                preorder.getClientName(), preorder.getNumber(), preorder.getRaffleType(), preorder.getPrice()
             });
 
         }
@@ -131,9 +136,9 @@ public class Consultapedido extends javax.swing.JFrame {
         
         for (int i = 0; i < size; i++) {
             this.order = new Order();
-            Tickets current = LotteryManager.getInstance().getTicket(i);
+            Preorder current = LotteryManager.getInstance().getPreorder(i);
             String client = current.getClientName();
-            String number = current.getNum();
+            String number = current.getNumber();
             int price = current.getPrice();
             String Raffletype = current.getRaffleType();
             int age = current.getAge();

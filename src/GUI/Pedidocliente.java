@@ -2,6 +2,7 @@ package GUI;
 
 import Lottery.Client;
 import Lottery.LotteryManager;
+import Lottery.Preorder;
 import Lottery.Raffle;
 import Lottery.Tickets;
 import javax.swing.table.DefaultTableModel;
@@ -92,7 +93,6 @@ public class Pedidocliente extends javax.swing.JFrame {
         combotype = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tablaticket = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
@@ -131,14 +131,6 @@ public class Pedidocliente extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, -1, -1));
 
-        jButton3.setText("Atrás");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
         Tablaticket.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -171,12 +163,6 @@ public class Pedidocliente extends javax.swing.JFrame {
     this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    Gestioncliente usuario= new Gestioncliente();
-    usuario.setVisible(true);
-    this.setVisible(false);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void combotypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combotypeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_combotypeActionPerformed
@@ -193,18 +179,18 @@ public class Pedidocliente extends javax.swing.JFrame {
      Updateraffle();
      
      for (Client client : LotteryManager.getInstance().getClient()) {
-           Tickets mamaticket=new Tickets();
+           Preorder mamaticket=new Preorder();
            String name=client.getName();
            int age=client.getBirthdate();
            mamaticket.setClientName(name);
-           mamaticket.setNum(number);
+           mamaticket.setNumber(number);
            mamaticket.setRaffleType(raffletype);
-           mamaticket.setTransmitterName(emissorname);
+           mamaticket.setTransmittername(emissorname);
            mamaticket.setPrice(price);
            mamaticket.setAge(age);
            
              
-           LotteryManager.getInstance().addTickets(mamaticket);
+           LotteryManager.getInstance().addpreOrder(mamaticket);
            
             }
          
@@ -259,7 +245,6 @@ public class Pedidocliente extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> combotype;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

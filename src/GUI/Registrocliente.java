@@ -53,7 +53,6 @@ public class Registrocliente extends javax.swing.JFrame {
         txtphone = new javax.swing.JTextField();
         txtemail = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -118,22 +117,8 @@ public class Registrocliente extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, -1, -1));
 
-        jButton2.setText("Atrás");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Entrada usuario = new Entrada();
-        usuario.setVisible(true);
-        this.setVisible(false);          // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.client = new Client();
@@ -146,7 +131,7 @@ public class Registrocliente extends javax.swing.JFrame {
         this.client.setId(id);
         this.client.setPhone(phone);
         LotteryManager.getInstance().addClient(client);
-        Gestioncliente usuario = new Gestioncliente();
+        Pedidocliente usuario = new Pedidocliente();
         usuario.setVisible(true);
         this.setVisible(false);
         // TODO add your handling code here:
@@ -206,7 +191,6 @@ public class Registrocliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

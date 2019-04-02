@@ -20,6 +20,7 @@ import java.util.List;
 public class LotteryManager {
 
     List<Tickets> tickets = new SimpleLinkeList<>();
+    List<Preorder> preorders = new SimpleLinkeList<>();
     List<Raffle> raffles = new DoubleLinkedList<>();
     List<Client> clients = new LQueue<>();
     List<Loteria> loterias = new SimpleLinkeList<>();
@@ -27,6 +28,7 @@ public class LotteryManager {
     List<Bingo> bingos = new ArrayList<>();
     List<Tiempos> tiemposs = new ArrayList<>();
     List<Order> orders = new LQueue<>();
+    
 
     public static final LotteryManager instance;
 
@@ -70,6 +72,18 @@ public class LotteryManager {
     
     public List<Order> getOrderrs(){
         return orders;
+    }
+    
+    public void removepreOrder(int index) {
+        preorders.remove(index);
+    }
+
+    public Collection<Preorder> getpreOrders() {
+        return preorders;
+    }
+
+    public void addpreOrder(Preorder newpreOrder) {
+        this.preorders.add(newpreOrder);
     }
 
     public void removeLoteria(int index) {
@@ -157,9 +171,9 @@ public class LotteryManager {
      * @param index
      * @author samoy
      */
-    public Tickets getTicket(int index) {  
-        Tickets ticket=tickets.get(index);
-        return ticket;
+    public Preorder getPreorder(int index) {  
+        Preorder preorder=preorders.get(index);
+        return preorder;
         }
 
     public void addTickets(Tickets newTickets) {

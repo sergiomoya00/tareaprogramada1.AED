@@ -16,64 +16,79 @@ import java.util.List;
 
 
 public class PriorityQueue<T extends Comparable<T>> {
-
-    private List<T> priorityQueue;
+        private List<T> pQueue;
 
     public PriorityQueue() {
-        priorityQueue = new ArrayList<>();
+        pQueue = new ArrayList<T>();
     }
 
     public int size() {
-        return priorityQueue.size();
+        return pQueue.size();
     }
 
     public boolean isEmpty() {
-        return priorityQueue.isEmpty();
+        return pQueue.isEmpty();
     }
 
     public T top() {
-        return priorityQueue.size() > 0 ? priorityQueue.get(0) : null;
+        return pQueue.size() > 0 ? pQueue.get(0) : null;
     }
 
     public T remove() {
-        if (priorityQueue.isEmpty()) {
+        if (isEmpty()) {
             return null;
         }
-        T result = priorityQueue.get(0);
-        priorityQueue.remove(0);
-        return result;
+        T res = pQueue.get(0);
+        T te = pQueue.get(size() - 1);
+        pQueue.remove(size() - 1);
+        int curr = 0, son = 1;
+        while (son < size() - 1) {
+            T cliente = pQueue.get(son);
+            T cliente2 = pQueue.get(son + 1);
+            T cliente3 = te;
+            if (son + 1 < size() && cliente2.compareTo(cliente) < 0) {
+                son++;
+            }
+            if (cliente3.compareTo(cliente) <= 0) {
+                break;
+            }
+            pQueue.set(curr, pQueue.get(son));
+            curr = son;
+            son = 2 * curr + 1;
+        }
+//        heap.set(curr, te);
+        return res;
     }
 
     public void insert(T e) {
-        priorityQueue.add(e);
-        Collections.sort(priorityQueue);
+        int curr = size();       //Tamaño del arreglo
+        int parent;             //Padre del nodo
+        while (curr > 0) {                     
+            parent = (curr - 1) / 2;
+            T cliente = e;
+            T cliente2 = pQueue.get(parent);
+            if (cliente2.compareTo(cliente) <= 0) {
+                break;
+            }
+            pQueue.get(parent);
+            curr = parent;
+        }
+        pQueue.add(curr, e);
+    }
+
+    public Iterator<T> iterator() {
+        return pQueue.iterator();
+    }
+    
+    public T getNext(){
+        if (isEmpty()) {
+            return null;
+        }
+        return pQueue.get(1);
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        boolean first = true;
-        for (T value : priorityQueue){
-            if (first){
-                first = false;
-            }
-            else{
-                sb.append(",");         
-            }
-            sb.append(String.valueOf(value));
-        }
-        return sb.toString();
+        return "PriorityQueue{" + "priorityqueue=" + pQueue + '}';
     }
-
-    public Iterator<T> iterator() {
-        return priorityQueue.iterator(); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-   public T getNext(){
-        if (isEmpty()) {
-            return null;
-        }
-        return priorityQueue.get(1);
-    } 
-    
 }

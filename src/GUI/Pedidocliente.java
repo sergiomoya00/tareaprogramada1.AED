@@ -7,73 +7,81 @@ import Lottery.Raffle;
 import Lottery.Tickets;
 import javax.swing.table.DefaultTableModel;
 
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Fanny Brenes
  */
 public class Pedidocliente extends javax.swing.JFrame {
-    DefaultTableModel tabla=new DefaultTableModel();
-    Tickets newticket=new Tickets();
+
+    DefaultTableModel tabla = new DefaultTableModel();
+    Tickets newticket = new Tickets();
+
     /**
      * Creates new form Pedidocliente
      */
-    private void Updateraffle(){
-        
-    DefaultTableModel model= ((DefaultTableModel) Tablaticket.getModel());
-    model.setRowCount(0);
-    for (Tickets ticket : LotteryManager.getInstance().getTickets()) {
-            if (combotype.getSelectedIndex()==0){
-                if (ticket.getRaffleType()=="Loteria"){
-            model.addRow(new Object[]{
-                ticket.getTransmitterName(), ticket.getRaffleType(), ticket.getNumber1(), ticket.getPrice()
-            });}}
-            if (combotype.getSelectedIndex()==1){
-            if (ticket.getRaffleType()=="Lotto"){
-            String num1=Integer.toString(ticket.getNumber1());
-            String num2=Integer.toString(ticket.getNumber2());
-            String num3=Integer.toString(ticket.getNumber3());
-            String num4=Integer.toString(ticket.getNumber4());
-            String num5=Integer.toString(ticket.getNumber5());
-            String num6=Integer.toString(ticket.getNumber6());
-            String num7=Integer.toString(ticket.getNumber7());
-            String combination=num1+","+num2+","+num3+","+num4+","+num5+","+num6+","+num7;
-            model.addRow(new Object[]{
-                ticket.getTransmitterName(), ticket.getRaffleType(), combination, ticket.getPrice()
-            });}}
-            if (combotype.getSelectedIndex()==2){
-            if (ticket.getRaffleType()=="Bingo"){
-            String num1=Integer.toString(ticket.getNumber1());
-            String num2=Integer.toString(ticket.getNumber2());
-            String num3=Integer.toString(ticket.getNumber3());
-            String num4=Integer.toString(ticket.getNumber4());
-            String num5=Integer.toString(ticket.getNumber5());
-            String num6=Integer.toString(ticket.getNumber6());
-            String num7=Integer.toString(ticket.getNumber7());
-            String num8=Integer.toString(ticket.getNumber8());
-            String num9=Integer.toString(ticket.getNumber9());
-            String combination=num1+","+num2+","+num3+","+num4+","+num5+","+num6+","+num7+","+num8+","+num9;
-            model.addRow(new Object[]{
-                ticket.getTransmitterName(), ticket.getRaffleType(), combination, ticket.getPrice()
-            });}}
-            if (combotype.getSelectedIndex()==3){
-            if (ticket.getRaffleType()=="Tiempos"){
-            String num1=Integer.toString(ticket.getNumber1());
-            String num2=Integer.toString(ticket.getNumber2());
-            String combination=num1+","+num2;
-            model.addRow(new Object[]{
-                ticket.getTransmitterName(), ticket.getRaffleType(), combination, ticket.getPrice()
-            });
-        }}
+    private void Updateraffle() {
+
+        DefaultTableModel model = ((DefaultTableModel) Tablaticket.getModel());
+        model.setRowCount(0);
+        for (Tickets ticket : LotteryManager.getInstance().getTickets()) {
+  
+                if (ticket.getRaffleType() == "Loteria") {
+                    model.addRow(new Object[]{
+                        ticket.getTransmitterName(), ticket.getRaffleType(), ticket.getNumber1(), ticket.getPrice()
+                    });
+                }
+            
+            
+                if (ticket.getRaffleType() == "Lotto") {
+                    String num1 = Integer.toString(ticket.getNumber1());
+                    String num2 = Integer.toString(ticket.getNumber2());
+                    String num3 = Integer.toString(ticket.getNumber3());
+                    String num4 = Integer.toString(ticket.getNumber4());
+                    String num5 = Integer.toString(ticket.getNumber5());
+                    String num6 = Integer.toString(ticket.getNumber6());
+                    String num7 = Integer.toString(ticket.getNumber7());
+                    String combination = num1 + "," + num2 + "," + num3 + "," + num4 + "," + num5 + "," + num6 + "," + num7;
+                    model.addRow(new Object[]{
+                        ticket.getTransmitterName(), ticket.getRaffleType(), combination, ticket.getPrice()
+                    });
+                }
+            
       
-    }}
+                if (ticket.getRaffleType() == "Bingo") {
+                    String num1 = Integer.toString(ticket.getNumber1());
+                    String num2 = Integer.toString(ticket.getNumber2());
+                    String num3 = Integer.toString(ticket.getNumber3());
+                    String num4 = Integer.toString(ticket.getNumber4());
+                    String num5 = Integer.toString(ticket.getNumber5());
+                    String num6 = Integer.toString(ticket.getNumber6());
+                    String num7 = Integer.toString(ticket.getNumber7());
+                    String num8 = Integer.toString(ticket.getNumber8());
+                    String num9 = Integer.toString(ticket.getNumber9());
+                    String combination = num1 + "," + num2 + "," + num3 + "," + num4 + "," + num5 + "," + num6 + "," + num7 + "," + num8 + "," + num9;
+                    model.addRow(new Object[]{
+                        ticket.getTransmitterName(), ticket.getRaffleType(), combination, ticket.getPrice()
+                    });
+                }
+            
+            
+                if (ticket.getRaffleType() == "Tiempos") {
+                    String num1 = Integer.toString(ticket.getNumber1());
+                    String num2 = Integer.toString(ticket.getNumber2());
+                    String combination = num1 + "," + num2;
+                    model.addRow(new Object[]{
+                        ticket.getTransmitterName(), ticket.getRaffleType(), combination, ticket.getPrice()
+                    });
+                }
+    }
+    }
+        
+    
+
     public Pedidocliente() {
         initComponents();
         Updateraffle();
@@ -158,9 +166,9 @@ public class Pedidocliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    Verificarcedula usuario= new Verificarcedula();
-    usuario.setVisible(true);
-    this.setVisible(false);        // TODO add your handling code here:
+        Verificarcedula usuario = new Verificarcedula();
+        usuario.setVisible(true);
+        this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void combotypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combotypeActionPerformed
@@ -168,41 +176,37 @@ public class Pedidocliente extends javax.swing.JFrame {
     }//GEN-LAST:event_combotypeActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    DefaultTableModel model= ((DefaultTableModel) Tablaticket.getModel());
-     Client newclient=new Client();
-     String emissorname=(String)Tablaticket.getValueAt(Tablaticket.getSelectedRow(), 0);
-     String raffletype=(String)Tablaticket.getValueAt(Tablaticket.getSelectedRow(), 1);
-     String number=Tablaticket.getValueAt(Tablaticket.getSelectedRow(), 2).toString();
-     String pric=Tablaticket.getValueAt(Tablaticket.getSelectedRow(), 3).toString();
-     int price=Integer.parseInt(pric);
-     LotteryManager.getInstance().removeTickets(this.Tablaticket.getSelectedRow());
-     Updateraffle();
-     
-     for (Client client : LotteryManager.getInstance().getClient()) {
-           Preorder mamaticket=new Preorder();
-           String name=client.getName();
-           int age=client.getBirthdate();
-           mamaticket.setClientName(name);
-           mamaticket.setNumber(number);
-           mamaticket.setRaffleType(raffletype);
-           mamaticket.setTransmittername(emissorname);
-           mamaticket.setPrice(price);
-           mamaticket.setAge(age);
-           
-             
-           LotteryManager.getInstance().addpreOrder(mamaticket);
-           
-            }
-         
-     
-     
-    
-    
-   // TODO add your handling code here:
+        DefaultTableModel model = ((DefaultTableModel) Tablaticket.getModel());
+        Client newclient = new Client();
+        String emissorname = (String) Tablaticket.getValueAt(Tablaticket.getSelectedRow(), 0);
+        String raffletype = (String) Tablaticket.getValueAt(Tablaticket.getSelectedRow(), 1);
+        String number = Tablaticket.getValueAt(Tablaticket.getSelectedRow(), 2).toString();
+        String pric = Tablaticket.getValueAt(Tablaticket.getSelectedRow(), 3).toString();
+        int price = Integer.parseInt(pric);
+        LotteryManager.getInstance().removeTickets(Tablaticket.getSelectedRow());
+        Updateraffle();
+
+        for (Client client : LotteryManager.getInstance().getClient()) {
+            Preorder mamaticket = new Preorder();
+            String name = client.getName();
+            int age = client.getBirthdate();
+            mamaticket.setClientName(name);
+            mamaticket.setNumber(number);
+            mamaticket.setRaffleType(raffletype);
+            mamaticket.setTransmittername(emissorname);
+            mamaticket.setPrice(price);
+            mamaticket.setAge(age);
+
+            LotteryManager.getInstance().addpreOrder(mamaticket);
+
+        }
+        
+
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    Updateraffle();        // TODO add your handling code here:
+        Updateraffle();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

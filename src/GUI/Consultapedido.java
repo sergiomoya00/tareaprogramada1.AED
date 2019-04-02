@@ -157,8 +157,22 @@ public class Consultapedido extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        LotteryManager.getInstance().removeTickets(this.Tablaticket.getSelectedRow());
-        refresh();        // TODO add your handling code here:
+        this.ticket=new Tickets();
+      
+        int size = LotteryManager.getInstance().getpreOrders().size();
+        for (int i = 0; i < size; i++) {
+        Preorder current = LotteryManager.getInstance().getPreorder(Tablaticket.getSelectedRow());
+        String transmittername=current.getTransmittername();
+        String raffletype=current.getRaffleType();
+        String number=current.getNumber();
+        int price=current.getPrice();
+        this.ticket.setNum(number);
+        this.ticket.setRaffleType(raffletype);
+        this.ticket.setPrice(price);
+        this.ticket.setTransmitterName(transmittername);
+        LotteryManager.getInstance().removepreOrder(this.Tablaticket.getSelectedRow());
+        LotteryManager.getInstance().addTickets(ticket);
+        refresh(); }       // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

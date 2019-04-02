@@ -8,6 +8,7 @@ package Lottery;
 import Collections.LQueue;
 import Collections.SimpleLinkeList;
 import Collections.DoubleLinkedList;
+import Collections.Stack;
 import com.sun.jmx.remote.internal.ArrayQueue;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,6 +28,7 @@ public class LotteryManager {
     List<Bingo> bingos = new ArrayList<>();
     List<Tiempos> tiemposs = new ArrayList<>();
     List<Order> orders = new LQueue<>();
+    List<Historial> historials = new Stack<>();
 
     public static final LotteryManager instance;
 

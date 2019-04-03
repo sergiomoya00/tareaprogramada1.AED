@@ -22,43 +22,43 @@ public class Busquedasorteos extends javax.swing.JFrame {
      */
     private Raffle raffle;
     private Historial historial;
-    
+
     public Raffle getRaffle() {
         return raffle;
     }
-    
+
     public Historial getHistorial() {
         return historial;
     }
-    
+
     public Busquedasorteos() {
         initComponents();
         refreshSearch();
-        
+
         this.nameRa.addItem("Nombre de rifas");
         for (Raffle raffle : LotteryManager.getInstance().getRaffles()) {
             nameRa.addItem(raffle.getName());
         }
-        
+
         this.typeRa.addItem("Tipos");
         for (RaffleType topic : RaffleType.values()) {
             typeRa.addItem(topic.name());
         }
-        
+
         this.emissionRa.addItem("Emisión");
         for (Raffle raffle : LotteryManager.getInstance().getRaffles()) {
             emissionRa.addItem(raffle.getEmission());
         }
-        
+
     }
-    
+
     private void refreshSearch() {
-        
+
         String raffleName = (String) nameRa.getSelectedItem(); //Valida que hayan valores en el ComboBox.
         if (nameRa.getSelectedIndex() == 0) {
             raffleName = null;
         }
-        
+
         String topicName = (String) typeRa.getSelectedItem();
         if (typeRa.getSelectedIndex() == 0) {
             topicName = null;
@@ -67,21 +67,21 @@ public class Busquedasorteos extends javax.swing.JFrame {
         if (emissionRa.getSelectedIndex() == 0) {
             emissionName = null;
         }
-        
+
         Raffle newRaffle = new Raffle();
         newRaffle.setType(topicName);
         newRaffle.setEmission(emissionName);
         newRaffle.setName(raffleName);
-        
+
         DefaultTableModel model = ((DefaultTableModel) raffleTable.getModel());
         model.setRowCount(0);
         for (Raffle raffle : LotteryManager.getInstance().searchRaffle(newRaffle)) {
             model.addRow(new Object[]{
                 raffle.getName(), raffle.getEmission(), raffle.getType()
             });
-            
+
         }
-        
+
     }
 
     /**
@@ -225,17 +225,18 @@ public class Busquedasorteos extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Historial historiaal = new Historial();
-        this.historial.setSearched((String) this.raffleTable.getValueAt(this.raffleTable.getSelectedRow(), 0));
+        String searchh = (String) this.raffleTable.getValueAt(this.raffleTable.getSelectedRow(), this.raffleTable.getSelectedColumn());
+        this.historial.setSearched(searchh);
         LotteryManager.getInstance().addHistorial(historiaal);
-        
+
         DefaultTableModel model = (DefaultTableModel) historialTable.getModel();
         for (Historial historial : LotteryManager.getInstance().getHistorials()) {
             model.addRow(new Object[]{
                 this.historial.getSearched()
             });
-            
+
         }
-        
+
         refreshSearch();
     }//GEN-LAST:event_jButton1ActionPerformed
 

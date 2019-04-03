@@ -58,6 +58,18 @@ public class LotteryManager {
         });
     }
 
+    public void removeHistorial(Historial historial) {
+        historials.remove(historial);
+    }
+
+    public Collection<Historial> getHistorials() {
+        return historials;
+    }
+
+    public void addHistorial(Historial newHistorial) {
+        this.historials.add(newHistorial);
+    }
+
     public void addOrder(Order order) {
         this.orders.add(order);
     }
@@ -69,8 +81,8 @@ public class LotteryManager {
     public Collection<Order> getOrder() {
         return orders;
     }
-    
-    public List<Order> getOrderrs(){
+
+    public List<Order> getOrderrs() {
         return orders;
     }
 
@@ -155,14 +167,13 @@ public class LotteryManager {
     }
 
     /**
-     * @return
-     * @param index
+     * @return @param index
      * @author samoy
      */
-    public Tickets getTicket(int index) {  
-        Tickets ticket=tickets.get(index);
+    public Tickets getTicket(int index) {
+        Tickets ticket = tickets.get(index);
         return ticket;
-        }
+    }
 
     public void addTickets(Tickets newTickets) {
         this.tickets.add(newTickets);

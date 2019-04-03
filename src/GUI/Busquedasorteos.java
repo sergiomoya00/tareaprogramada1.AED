@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Lottery.Historial;
 import Lottery.LotteryManager;
 import Lottery.Raffle;
 import Lottery.RaffleType;
@@ -20,39 +21,44 @@ public class Busquedasorteos extends javax.swing.JFrame {
      * Creates new form Busquedasorteos
      */
     private Raffle raffle;
-
+    private Historial historial;
+    
     public Raffle getRaffle() {
         return raffle;
     }
-
+    
+    public Historial getHistorial() {
+        return historial;
+    }
+    
     public Busquedasorteos() {
         initComponents();
         refreshSearch();
-
+        
         this.nameRa.addItem("Nombre de rifas");
         for (Raffle raffle : LotteryManager.getInstance().getRaffles()) {
             nameRa.addItem(raffle.getName());
         }
-
+        
         this.typeRa.addItem("Tipos");
         for (RaffleType topic : RaffleType.values()) {
             typeRa.addItem(topic.name());
         }
-
+        
         this.emissionRa.addItem("Emisión");
         for (Raffle raffle : LotteryManager.getInstance().getRaffles()) {
             emissionRa.addItem(raffle.getEmission());
         }
-
+        
     }
-
+    
     private void refreshSearch() {
-
+        
         String raffleName = (String) nameRa.getSelectedItem(); //Valida que hayan valores en el ComboBox.
         if (nameRa.getSelectedIndex() == 0) {
             raffleName = null;
         }
-
+        
         String topicName = (String) typeRa.getSelectedItem();
         if (typeRa.getSelectedIndex() == 0) {
             topicName = null;
@@ -61,21 +67,21 @@ public class Busquedasorteos extends javax.swing.JFrame {
         if (emissionRa.getSelectedIndex() == 0) {
             emissionName = null;
         }
-
+        
         Raffle newRaffle = new Raffle();
         newRaffle.setType(topicName);
         String name = this.raffleName.getText();
         newRaffle.setName(name);
-
+        
         DefaultTableModel model = ((DefaultTableModel) raffleTable.getModel());
         model.setRowCount(0);
         for (Raffle raffle : LotteryManager.getInstance().searchRaffle(newRaffle)) {
             model.addRow(new Object[]{
                 raffle.getName(), raffle.getEmission(), raffle.getType()
             });
-
+            
         }
-
+        
     }
 
     /**
@@ -98,7 +104,9 @@ public class Busquedasorteos extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
-        raffleName = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        historialTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -145,8 +153,13 @@ public class Busquedasorteos extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 110));
 
-        jButton1.setText("ver detalle del sorteo");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, -1, -1));
+        jButton1.setText("Ver detalle del sorteo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, -1, -1));
 
         jButton2.setText("sorteos vistos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -163,8 +176,25 @@ public class Busquedasorteos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 230, 100));
-        getContentPane().add(raffleName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 150, 30));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 230, 100));
+
+        jLabel2.setText("Historial");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, -1, -1));
+
+        historialTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Nombre del sorteo"
+            }
+        ));
+        jScrollPane2.setViewportView(historialTable);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, 200, 140));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -192,6 +222,22 @@ public class Busquedasorteos extends javax.swing.JFrame {
     private void emissionRaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emissionRaActionPerformed
         refreshSearch();        // TODO add your handling code here:
     }//GEN-LAST:event_emissionRaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Historial historiaal = new Historial();
+        this.historial.setSearched((String) this.raffleTable.getValueAt(this.raffleTable.getSelectedRow(), 0));
+        LotteryManager.getInstance().addHistorial(historiaal);
+        
+        DefaultTableModel model = (DefaultTableModel) historialTable.getModel();
+        for (Historial historial : LotteryManager.getInstance().getHistorials()) {
+            model.addRow(new Object[]{
+                this.historial.getSearched()
+            });
+            
+        }
+        
+        refreshSearch();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,15 +276,17 @@ public class Busquedasorteos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> emissionRa;
+    private javax.swing.JTable historialTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JComboBox<String> nameRa;
     private javax.swing.JComboBox<String> pricesRa;
-    private javax.swing.JTextField raffleName;
     private javax.swing.JTable raffleTable;
     private javax.swing.JComboBox<String> typeRa;
     // End of variables declaration//GEN-END:variables

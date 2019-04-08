@@ -63,13 +63,13 @@ public class Entrada extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     Gestionjps usuario= new Gestionjps();
     usuario.setVisible(true);
-    this.setVisible(false);        // TODO add your handling code here:
+    this.setVisible(false);        // Botón para ir a la ventana Gestionjps
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     Busquedasorteos usuario= new Busquedasorteos();
     usuario.setVisible(true);
-    this.setVisible(false);// TODO add your handling code here:
+    this.setVisible(false);// Botón para ir a la ventana Busquedasorteos
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

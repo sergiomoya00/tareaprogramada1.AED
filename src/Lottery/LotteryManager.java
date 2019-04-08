@@ -24,11 +24,12 @@ public class LotteryManager {
     List<Tickets> tickets = new SimpleLinkeList<>();
     List<Preorder> preorders = new SimpleLinkeList<>();
     List<Raffle> raffles = new DoubleLinkedList<>();
-    List<Client> clients = new LQueue<>();
+    List<Client> clients = new SimpleLinkeList<>();
     List<Loteria> loterias = new SimpleLinkeList<>();
     List<Lotto> lottos = new SimpleLinkeList<>();
     List<Bingo> bingos = new ArrayList<>();
     List<Tiempos> tiemposs = new ArrayList<>();
+    private PriorityQueueFinal orderss = new PriorityQueueFinal();
     private Adapter orders;
     List<Historial> historials = new Stack<>();
 
@@ -62,6 +63,23 @@ public class LotteryManager {
         });
     }
 
+    public void addOrderr(Order order) {
+        this.orderss.insert(order);
+    }
+
+    public void removeOrderrr() {
+        orderss.remove();
+    }
+
+    public PriorityQueueFinal getOrderrr() {
+        return orderss;
+    }
+    
+       public Order getOrderrss(int index) {
+        Order order = (Order) orderss.get(index);
+        return order;
+    }
+
     public void removeHistorial(Historial historial) {
         historials.remove(historial);
     }
@@ -85,7 +103,7 @@ public class LotteryManager {
     public Adapter getOrder() {
         return orders;
     }
-    
+
     public void removepreOrder(int index) {
         preorders.remove(index);
     }
@@ -182,11 +200,10 @@ public class LotteryManager {
      * @return @param index
      * @author samoy
      */
-    public Preorder getPreorder(int index) {  
-        Preorder preorder=preorders.get(index);
+    public Preorder getPreorder(int index) {
+        Preorder preorder = preorders.get(index);
         return preorder;
-        }
-   
+    }
 
     public void addTickets(Tickets newTickets) {
         this.tickets.add(newTickets);

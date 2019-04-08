@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package GUI;
 
+package GUI;
+//Se realizan los imports necesarios
 import Lottery.Client;
 import Lottery.LotteryManager;
 import Lottery.Order;
+import Lottery.Preorder;
 import Lottery.Tickets;
 import java.util.Properties;
 import javax.mail.*;
@@ -15,15 +12,13 @@ import javax.mail.internet.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Fanny Brenes
- */
-public class Gestionpedidos extends javax.swing.JFrame {
 
+public class Gestionpedidos extends javax.swing.JFrame {
+    //Se crean atributos de tipo Client y Order para instancear objetos
+    
     private Order order;
     private Client client;
-    
+    //Se crea el método get, para cada atributo creado
     public Order getOrder() {
         return order;
     }
@@ -32,19 +27,18 @@ public class Gestionpedidos extends javax.swing.JFrame {
         return client;
     }
     
-    /**
-     * Creates new form Gestionpedidos
-     */
     public Gestionpedidos() {
         initComponents();
         refreshorder();
     }
-
+    //Método pra que se visualicen en la tabla los pedidos que han realizado los diferentes clientes
     public void refreshorder() {
         DefaultTableModel model = ((DefaultTableModel) tablaconsultar.getModel());
         model.setRowCount(0);
 
-        for (Order order : LotteryManager.getInstance().getOrder()) {
+        int size = LotteryManager.getInstance().getOrderrr().size();
+        for (int i = 0; i < size; i++) {
+            Order order = LotteryManager.getInstance().getOrderrss(i);
             model.addRow(new Object[]{
                 order.getClientName(), order.getRaffleType(), order.getAge(), order.getPrice(), order.getNumber(),order.getEmail()
             });
@@ -63,7 +57,6 @@ public class Gestionpedidos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaconsultar = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         txtmessage = new javax.swing.JTextField();
@@ -90,14 +83,6 @@ public class Gestionpedidos extends javax.swing.JFrame {
         jLabel1.setText("Atender pedidos");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
-        jButton1.setText("Atender");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 380, -1, -1));
-
         jButton2.setText("Atrás");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,14 +107,6 @@ public class Gestionpedidos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-    NoticeClient noticed = new NoticeClient();
-    noticed.setVisible(true);
-    LotteryManager.getInstance().removeOrder();
-        refreshorder();        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
                 // TODO add your handling code here:
@@ -170,7 +147,7 @@ public class Gestionpedidos extends javax.swing.JFrame {
     }   catch (MessagingException e) {
         e.printStackTrace();
         }
-    // TODO add your handling code here:
+    // Botón para enviarle el correo al usuario con sus pedidos
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -209,7 +186,6 @@ public class Gestionpedidos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;

@@ -1,27 +1,12 @@
 package GUI;
-
+// Se realizan los imports necesarios
 import Lottery.Client;
 import Lottery.LotteryManager;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author Fanny Brenes
- */
 public class Registrocliente extends javax.swing.JFrame {
-
+    //Se crea un atributo de tipo Client para instancear un objeto, con su respectivo método get
     private Client client;
-
-    /**
-     * Creates new form PedidoTicket
-     *
-     * @return
-     */
     public Client getClient() {
         return client;
     }
@@ -121,7 +106,7 @@ public class Registrocliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.client = new Client();
+        this.client = new Client(); //Se realizan los sets en la clase Client
         this.client.setAddress(txtaddress.getText());
         this.client.setEmail(txtemail.getText());
         this.client.setName(txtname.getText());
@@ -130,8 +115,8 @@ public class Registrocliente extends javax.swing.JFrame {
         int phone = Integer.parseInt(txtphone.getText());
         this.client.setId(id);
         this.client.setPhone(phone);
-        LotteryManager.getInstance().addClient(client);
-        Pedidocliente usuario = new Pedidocliente();
+        LotteryManager.getInstance().addClient(client);//Se inserta el objeto de clase Client en la lista
+        Pedidocliente usuario = new Pedidocliente(); //Se accede a la ventana Pedidocliente
         usuario.setVisible(true);
         this.setVisible(false);
         // TODO add your handling code here:

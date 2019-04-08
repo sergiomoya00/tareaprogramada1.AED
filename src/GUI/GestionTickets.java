@@ -1,20 +1,12 @@
 package GUI;
-
+// Se realizan los imports necesarios
 import Lottery.LotteryManager;
 import Lottery.Tickets;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author Fanny Brenes
- */
-public class GestionTickets extends javax.swing.JFrame {
 
+public class GestionTickets extends javax.swing.JFrame {
+    // Se crea un atributo de tipo Tickets ara instancear objetos con su respectivo método get
     private Tickets ticket;
 
     public Tickets getTickets() {
@@ -28,17 +20,17 @@ public class GestionTickets extends javax.swing.JFrame {
         initComponents();
         refreshTickets();
     }
-
+    // Método para que se visualicen los tiquetes en la tabla
     public void refreshTickets() {
         DefaultTableModel model = ((DefaultTableModel) ticketTable.getModel());
         model.setRowCount(0);
         
-          for (Tickets ticket : LotteryManager.getInstance().getTickets()) {
+          for (Tickets ticket : LotteryManager.getInstance().getTickets()) { // For utlizado para insertar tiquetes de tipo Loteria
             if (ticket.getRaffleType()=="Loteria"){
             model.addRow(new Object[]{
                 ticket.getTransmitterName(), ticket.getRaffleType(), ticket.getNumber1(), ticket.getPrice()
             });}
-            if (ticket.getRaffleType()=="Lotto"){
+            if (ticket.getRaffleType()=="Lotto"){ //For utlizado para insertar tiquetes de tipo Loteria
             String num1=Integer.toString(ticket.getNumber1());
             String num2=Integer.toString(ticket.getNumber2());
             String num3=Integer.toString(ticket.getNumber3());
@@ -52,7 +44,7 @@ public class GestionTickets extends javax.swing.JFrame {
                 ticket.getTransmitterName(), ticket.getRaffleType(), combination, price
             });
         }
-            if (ticket.getRaffleType()=="Bingo"){
+            if (ticket.getRaffleType()=="Bingo"){ //For utlizado para insertar tiquetes de tipo Bingo
             String num1=Integer.toString(ticket.getNumber1());
             String num2=Integer.toString(ticket.getNumber2());
             String num3=Integer.toString(ticket.getNumber3());
@@ -67,7 +59,7 @@ public class GestionTickets extends javax.swing.JFrame {
                 ticket.getTransmitterName(), ticket.getRaffleType(), combination, ticket.getPrice()
             });
         }
-            if (ticket.getRaffleType()=="Tiempos"){
+            if (ticket.getRaffleType()=="Tiempos"){ //For utlizado para insertar tiquetes de tipo Tiempos
             String num1=Integer.toString(ticket.getNumber1());
             String num2=Integer.toString(ticket.getNumber2());
             String combination=num1+","+num2;
@@ -161,7 +153,7 @@ public class GestionTickets extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         Gestionjps usuario = new Gestionjps();
         usuario.setVisible(true);
-        this.setVisible(false);        // TODO add your handling code here:
+        this.setVisible(false);        // Botón para ir a la ventana Gestionjps
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -170,9 +162,9 @@ public class GestionTickets extends javax.swing.JFrame {
     usuario.addWindowStateListener(new java.awt.event.WindowAdapter() {
         @Override
     public void windowDeactivated(java.awt.event.WindowEvent windowEvent){
-    refreshTickets();
+    refreshTickets();// Una vez, se cierre la ventana, se realiza el método refreshTickets para que se visualicen los nuevos tiquetes
     }    
-});        // TODO add your ha        // TODO add your handling code here:
+});        // Botón para acceder a la ventana TicketWindow y crar los tiquetes
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

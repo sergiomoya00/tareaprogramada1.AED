@@ -48,6 +48,11 @@ public class PriorityQueueFinal<T extends Comparable<T>> {
         Collections.sort(priorityQueue);
     }
 
+    public T get(int index){
+    T result = priorityQueue.get(index);
+    return result;
+    }
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

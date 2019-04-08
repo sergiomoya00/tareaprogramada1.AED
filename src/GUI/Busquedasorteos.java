@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Se realizan los imports que se necesitan para instancear los objetos
  */
 package GUI;
 
@@ -10,21 +8,20 @@ import Lottery.Raffle;
 import Lottery.RaffleType;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Fanny Brenes
- */
+
 public class Busquedasorteos extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Busquedasorteos
-     */
+/*
+Se crea un atributo de tipo Raffle para realizar la búsqueda de las rifas y su respectivo método get
+ */
+    
     private Raffle raffle;
-
+ 
     public Raffle getRaffle() {
         return raffle;
     }
-
+/*
+Se obtienen los filtros de búsqueda según nombre de rifa, tipo de rifa y fecha de emisón
+ */
     public Busquedasorteos() {
         initComponents();
         refreshSearch();
@@ -45,7 +42,9 @@ public class Busquedasorteos extends javax.swing.JFrame {
         }
 
     }
-
+    /*
+Método para que los objetos, en este caso las rifas, se inserten en la tabla para que el usuario pueda visualizarlos
+ */
     private void refreshSearch() {
 
         String raffleName = (String) nameRa.getSelectedItem(); //Valida que hayan valores en el ComboBox.
@@ -70,7 +69,9 @@ public class Busquedasorteos extends javax.swing.JFrame {
 
         newRaffle.setName(raffleName);
         
-
+        /*
+ Este "for" lo utilizamos para ir metiedno uno por uno los elementos que estén en la lista raffle
+ */
         DefaultTableModel model = ((DefaultTableModel) raffleTable.getModel());
         model.setRowCount(0);
         for (Raffle raffle : LotteryManager.getInstance().searchRaffle(newRaffle)) {
@@ -102,7 +103,8 @@ public class Busquedasorteos extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
-        raffleName = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -149,8 +151,13 @@ public class Busquedasorteos extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 110));
 
-        jButton1.setText("ver detalle del sorteo");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, -1, -1));
+        jButton1.setText("Ver detalle del sorteo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, -1, -1));
 
         jButton2.setText("sorteos vistos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -166,9 +173,19 @@ public class Busquedasorteos extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 230, 100));
-        getContentPane().add(raffleName, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 150, 30));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 230, 100));
+
+        jLabel2.setText("Historial");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, -1, -1));
+
+        jButton4.setText("Registro cliente");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,26 +193,52 @@ public class Busquedasorteos extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Entrada usuario = new Entrada();
         usuario.setVisible(true);
-        this.setVisible(false);        // TODO add your handling code here:
+        this.setVisible(false);       /*
+Este botón se usa para ir a la ventana de Entrada
+ */
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Sorteosvistos usuario = new Sorteosvistos();
         usuario.setVisible(true);
-        this.setVisible(false);        // TODO add your handling code here:
+        this.setVisible(false);        
+/*
+Este botón se utiliza para ir a los sorteos vistos por el usuario
+ */
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void nameRaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameRaActionPerformed
-        refreshSearch();        // TODO add your handling code here:
+        refreshSearch();        
+        /*
+Cada vez que el combo box cambie de item, se utiliza el método refreshSearch para que en la tabla se visualice 
+        únicamente el filtro seleccionado
+ */
     }//GEN-LAST:event_nameRaActionPerformed
 
     private void typeRaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeRaActionPerformed
-        refreshSearch();        // TODO add your handling code here:
+        refreshSearch();
+           /*
+Cada vez que el combo box cambie de item, se utiliza el método refreshSearch para que en la tabla se visualice 
+        únicamente el filtro seleccionado
+ */        
     }//GEN-LAST:event_typeRaActionPerformed
 
     private void emissionRaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emissionRaActionPerformed
-        refreshSearch();        // TODO add your handling code here:
+        refreshSearch();       
+           /*
+Cada vez que el combo box cambie de item, se utiliza el método refreshSearch para que en la tabla se visualice 
+        únicamente el filtro seleccionado
+ */
     }//GEN-LAST:event_emissionRaActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+      Registrocliente usuario = new Registrocliente();
+        usuario.setVisible(true);
+        this.setVisible(false);  
+   /*
+Botón se utiliza para que se registre el cliente que va a solicitar los tiquetes
+ */
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,12 +280,13 @@ public class Busquedasorteos extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JComboBox<String> nameRa;
     private javax.swing.JComboBox<String> pricesRa;
-    private javax.swing.JTextField raffleName;
     private javax.swing.JTable raffleTable;
     private javax.swing.JComboBox<String> typeRa;
     // End of variables declaration//GEN-END:variables

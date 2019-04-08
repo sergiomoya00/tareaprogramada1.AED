@@ -30,7 +30,7 @@ public class Tests {
         employeePriorityQueue.insert(new Order("Chris", 2));
         employeePriorityQueue.insert(new Order("Andrea", 65));
         employeePriorityQueue.insert(new Order("Jack", 9));
-        employeePriorityQueue.remove();
+        
 
         /*
             The compareTo() method implemented in the Employee class is used to determine

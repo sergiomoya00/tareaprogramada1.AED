@@ -15,35 +15,36 @@ public class Order implements Comparable<Order> {
 
     private String clientName;
     private String raffleType;
-    private String number,email;
+    private String number, email;
 
- 
-    private int price,age;
+    private int price, age;
 
-    public Order(String clientName, String raffleType, String number, int price, int birthdate) {
+    public Order(String clientName, String raffleType, String number, String email, int price, int age) {
         this.clientName = clientName;
         this.raffleType = raffleType;
         this.number = number;
+        this.email = email;
         this.price = price;
         this.age = age;
     }
-    
-    public Order(String clientName, int birthdate){
+
+    public Order(String clientName, int age) {
         this.clientName = clientName;
         this.age = age;
-    }
+    }   
 
     public Order() {
     }
-       public String getEmail() {
+
+    public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
-    
-     public int getAge() {
+
+    public int getAge() {
         return age;
     }
 
@@ -93,7 +94,8 @@ public class Order implements Comparable<Order> {
         Order client = (Order) o;
         return Integer.compare(client.age, age) == 0
                 && Objects.equals(clientName, client.clientName);
-    }
+           
+        }
 
     @Override
     public int hashCode() {
@@ -103,8 +105,8 @@ public class Order implements Comparable<Order> {
     @Override
     public String toString() {
         return "Employee{"
-                + "name='" + clientName + '\''
-                + ", salary=" + age
+                + "name='" + clientName +'\''
+                + ", salary=" + age  
                 + '}';
     }
 

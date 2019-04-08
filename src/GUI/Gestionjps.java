@@ -90,31 +90,31 @@ public class Gestionjps extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     Gestiónsorteos usuario= new Gestiónsorteos();
     usuario.setVisible(true);
-    this.setVisible(false);        // TODO add your handling code here:
+    this.setVisible(false);        // Botón para ir a la gestión de los sorteos
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
     Entrada usuario= new Entrada();
     usuario.setVisible(true);
-    this.setVisible(false);        // TODO add your handling code here:
+    this.setVisible(false);        // Botón para ir a la ventana de entrada
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
      GestionTickets usuario= new GestionTickets();
     usuario.setVisible(true);
-    this.setVisible(false);        // TODO add your handling code here:
+    this.setVisible(false);        // Botón para ir a la gestión de tiquetes
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
      Gestionpedidos usuario= new Gestionpedidos();
     usuario.setVisible(true);
-    this.setVisible(false);      // TODO add your handling code here:
+    this.setVisible(false);      // Botón para ir a la gestión de pedidos
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
     Realizarsorteos usuario= new Realizarsorteos();
     usuario.setVisible(true);
-    this.setVisible(false);          // TODO add your handling code here:
+    this.setVisible(false);          // Botón para realizar los diferentes sorteos
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**

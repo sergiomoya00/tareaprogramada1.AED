@@ -10,25 +10,24 @@ package Lottery;
  * @author José Andres
  */
 public class Preorder {
-private String clientName,Transmittername;
-    private String raffleType,email;
 
-    
-    
-   
-   
+    private String clientName, Transmittername;
+    private String raffleType, email,number;
+    private int age,price;
 
-    public Preorder(String Transmittername,String clientName, String raffleType, String number, int price,int age) {
+    public Preorder(String Transmittername, String clientName, String raffleType, String number, String email, int price, int age) {
         this.clientName = clientName;
         this.raffleType = raffleType;
         this.number = number;
         this.price = price;
-        this.age=age;
-        this.Transmittername=Transmittername;
+        this.age = age;
+        this.Transmittername = Transmittername;
+        this.email = email;
     }
 
     public Preorder() {
     }
+
     public String getEmail() {
         return email;
     }
@@ -36,8 +35,7 @@ private String clientName,Transmittername;
     public void setEmail(String email) {
         this.email = email;
     }
-    private String number;
-    private int price,age;
+
     public String getTransmittername() {
         return Transmittername;
     }
@@ -45,7 +43,8 @@ private String clientName,Transmittername;
     public void setTransmittername(String Transmittername) {
         this.Transmittername = Transmittername;
     }
-     public int getAge() {
+
+    public int getAge() {
         return age;
     }
 

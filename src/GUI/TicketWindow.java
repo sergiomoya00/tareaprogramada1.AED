@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package GUI;
-
+//Se realizan los mports necesarios
 import Lottery.Bingo;
 import Lottery.Loteria;
 import Lottery.LotteryManager;
@@ -20,13 +20,13 @@ import javax.swing.JOptionPane;
  * @author samoy
  */
 public class TicketWindow extends javax.swing.JFrame {
-
+    //Se crean atributos de tipo Tickets,Loteria,Lotto,Bingo,Tiempos para instancear objetos
     private Tickets ticket;
     private Loteria loteria;
     private Lotto lotto;
     private Bingo bingo;
     private Tiempos tiempos;
-    
+    //Se crea método get para cada uno de los atributos
      public Loteria getLoteria(){
        return loteria;
     }
@@ -50,20 +50,8 @@ public class TicketWindow extends javax.swing.JFrame {
      */
     public TicketWindow() {
         initComponents();
-
-        this.typeTxt.addItem("Tipos de rifas");
-        for (RaffleType topic : RaffleType.values()) {
-            typeTxt.addItem(topic.name());
-        }
-    }
-
-    public void refreshT() {
         
-        String topicName = (String) typeTxt.getSelectedItem();
-        if (typeTxt.getSelectedIndex() == 0) {
-            topicName = null;
         }
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -192,7 +180,7 @@ public class TicketWindow extends javax.swing.JFrame {
         String type = (String) this.typeTxt.getSelectedItem();
         this.ticket = new Tickets();
         
-        if (typeTxt.getSelectedIndex()==0){
+        if (typeTxt.getSelectedIndex()==0){ //If utilizado para realizar el metodo de set en la clase Loteria
         int num1 = Integer.parseInt(txtnum1.getText());
         if (num1>=0&&num1<=99){
         this.ticket.setTransmitterName(trasmitterName.getText());
@@ -203,7 +191,7 @@ public class TicketWindow extends javax.swing.JFrame {
         }
         else {JOptionPane.showMessageDialog(null, "Digitar numero entre 0-99 para jugar lotería");}
         }
-        if (typeTxt.getSelectedIndex()==1){
+        if (typeTxt.getSelectedIndex()==1){ //If utilizado para realizar el metodo de set en la clase Lotto
         int num1 = Integer.parseInt(txtnum1.getText());
         int num2 = Integer.parseInt(txtnum2.getText());
         int num3 = Integer.parseInt(txtnum3.getText());
@@ -225,7 +213,7 @@ public class TicketWindow extends javax.swing.JFrame {
         this.ticket.setPrice(prices);}
         else {JOptionPane.showMessageDialog(null, "Revisar que cada numero insertado para jugar lotto sea de un solo digito");}
         }
-        if (typeTxt.getSelectedIndex()==2){
+        if (typeTxt.getSelectedIndex()==2){ //If utilizado para realizar el metodo de set en la clase Bingo
         int num1 = Integer.parseInt(txtnum1.getText());
         int num2 = Integer.parseInt(txtnum2.getText());
         int num3 = Integer.parseInt(txtnum3.getText());
@@ -254,7 +242,7 @@ public class TicketWindow extends javax.swing.JFrame {
                 }
         
         }
-        if (typeTxt.getSelectedIndex()==3){
+        if (typeTxt.getSelectedIndex()==3){ //If utilizado para realizar el metodo de set en la clase Tiempos
         int num1 = Integer.parseInt(txtnum1.getText());
         int num2 = Integer.parseInt(txtnum2.getText());
         if(num1>=0&&num1<=99&&num2>=0&&num2<=99){
@@ -270,7 +258,7 @@ public class TicketWindow extends javax.swing.JFrame {
                 }
         }
         
-        LotteryManager.getInstance().addTickets(ticket);
+        LotteryManager.getInstance().addTickets(ticket); //Inserta el objeto de clase Tickets en una lista
         GestionTickets usuario = new GestionTickets();
         usuario.setVisible(true);
         this.setVisible(false);

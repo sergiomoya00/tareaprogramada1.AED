@@ -54,7 +54,7 @@ public class Finalpedido extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     Entrada usuario= new Entrada();
     usuario.setVisible(true);
-    this.setVisible(false);        // TODO add your handling code here:
+    this.setVisible(false);        // Botón para ir a la ventana Entrada
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

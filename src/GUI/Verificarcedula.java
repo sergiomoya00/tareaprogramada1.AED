@@ -1,5 +1,5 @@
 package GUI;
-
+//Se realizan imports necesarios
 import Lottery.Client;
 import Lottery.LotteryManager;
 import javax.swing.JOptionPane;
@@ -61,7 +61,7 @@ public class Verificarcedula extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     Client newclient=new Client();
-    for (Client client : LotteryManager.getInstance().getClient()){
+    for (Client client : LotteryManager.getInstance().getClient()){ //For utilizado para verificar la cedula
     int id=Integer.parseInt(txtid.getText());
     if (id==client.getId()){
     Consultapedido usuario= new Consultapedido();

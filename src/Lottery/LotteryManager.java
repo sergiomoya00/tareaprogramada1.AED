@@ -28,7 +28,7 @@ public class LotteryManager {
     List<Lotto> lottos = new SimpleLinkeList<>();
     List<Bingo> bingos = new ArrayList<>();
     List<Tiempos> tiemposs = new ArrayList<>();
-    private PriorityQueueFinal<Order> orders = new PriorityQueueFinal<>();
+    private Adapter orders;
     List<Historial> historials = new Stack<>();
 
     public static final LotteryManager instance;
@@ -72,14 +72,14 @@ public class LotteryManager {
     }
 
     public void addOrder(Order order) {
-        this.orders.insert(order);
+        this.orders.push(order);
     }
 
-    public void removeOrder(Order order) {
-        orders.remove();
+    public void removeOrder() {
+        orders.pop();
     }
 
-    public PriorityQueueFinal<Order> getOrder() {
+    public Adapter getOrder() {
         return orders;
     }
 

@@ -127,7 +127,7 @@ public class Gestionpedidos extends javax.swing.JFrame {
 
     NoticeClient noticed = new NoticeClient();
     noticed.setVisible(true);
-    LotteryManager.getInstance().removeOrders(tablaconsultar.getSelectedRow());
+    LotteryManager.getInstance().removeOrder();
         refreshorder();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

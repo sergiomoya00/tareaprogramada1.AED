@@ -12,7 +12,7 @@ import Lottery.Tickets;
  */
 public class Bingo {
 
-    private String datebingo,name,dateemission;
+    private String datebingo,name,dateemission,add;
     private int winnernumb;
     private int numero1,numero2,numero3,numero4,numero5,numero6,numero7,numero8,numero9;
     private Tickets ticket;

@@ -5,11 +5,13 @@
  */
 package Lottery;
 
+import java.util.Objects;
+
 /**
  *
  * @author samoy
  */
-public class Order {
+public class Order implements Comparable<Order> {
 
     private String clientName;
     private String raffleType;
@@ -18,13 +20,17 @@ public class Order {
  
     private int price,age;
 
-   
-
-    public Order(String clientName, String raffleType, String number, int price) {
+    public Order(String clientName, String raffleType, String number, int price, int birthdate) {
         this.clientName = clientName;
         this.raffleType = raffleType;
         this.number = number;
         this.price = price;
+        this.age = age;
+    }
+    
+    public Order(String clientName, int birthdate){
+        this.clientName = clientName;
+        this.age = age;
     }
 
     public Order() {
@@ -75,6 +81,43 @@ public class Order {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Order client = (Order) o;
+        return Integer.compare(client.age, age) == 0
+                && Objects.equals(clientName, client.clientName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(clientName, age);
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{"
+                + "name='" + clientName + '\''
+                + ", salary=" + age
+                + '}';
+    }
+
+    // Compara dos clientes por su edad
+    @Override
+    public int compareTo(Order client) {
+        if (this.getAge() > client.getAge()) {
+            return 1;
+        } else if (this.getAge() < client.getAge()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 
 }

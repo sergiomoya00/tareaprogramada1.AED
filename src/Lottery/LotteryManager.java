@@ -8,6 +8,8 @@ package Lottery;
 import Collections.LQueue;
 import Collections.SimpleLinkeList;
 import Collections.DoubleLinkedList;
+import Collections.Stack;
+import Collections.PriorityQueueFinal;
 import com.sun.jmx.remote.internal.ArrayQueue;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,8 +29,8 @@ public class LotteryManager {
     List<Lotto> lottos = new SimpleLinkeList<>();
     List<Bingo> bingos = new ArrayList<>();
     List<Tiempos> tiemposs = new ArrayList<>();
-    List<Order> orders = new LQueue<>();
-    
+    private Adapter orders;
+    List<Historial> historials = new Stack<>();
 
     public static final LotteryManager instance;
 
@@ -60,19 +62,27 @@ public class LotteryManager {
         });
     }
 
+    public void removeHistorial(Historial historial) {
+        historials.remove(historial);
+    }
+
+    public Collection<Historial> getHistorials() {
+        return historials;
+    }
+
+    public void addHistorial(Historial newHistorial) {
+        this.historials.add(newHistorial);
+    }
+
     public void addOrder(Order order) {
-        this.orders.add(order);
+        this.orders.push(order);
     }
 
-    public void removeOrder(Order order) {
-        orders.remove(order);
+    public void removeOrder() {
+        orders.pop();
     }
 
-    public Collection<Order> getOrder() {
-        return orders;
-    }
-    
-    public List<Order> getOrderrs(){
+    public Adapter getOrder() {
         return orders;
     }
     
@@ -163,26 +173,20 @@ public class LotteryManager {
     public void removeTickets(int index) {
         tickets.remove(index);
     }
-    public void removeOrders(int index) {
-        orders.remove(index);
-    }
+
     public Collection<Tickets> getTickets() {
         return tickets;
     }
 
     /**
-     * @return
-     * @param index
+     * @return @param index
      * @author samoy
      */
     public Preorder getPreorder(int index) {  
         Preorder preorder=preorders.get(index);
         return preorder;
         }
-    public Order getorder(int index) {  
-        Order order=orders.get(index);
-        return order;
-        }
+   
 
     public void addTickets(Tickets newTickets) {
         this.tickets.add(newTickets);

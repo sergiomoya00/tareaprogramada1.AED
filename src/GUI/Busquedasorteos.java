@@ -10,6 +10,7 @@ import Lottery.LotteryManager;
 import Lottery.Raffle;
 import Lottery.RaffleType;
 import javax.swing.table.DefaultTableModel;
+import org.xml.sax.Attributes;
 
 /**
  *

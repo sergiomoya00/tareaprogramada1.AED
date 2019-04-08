@@ -9,6 +9,7 @@ import Collections.LQueue;
 import Collections.SimpleLinkeList;
 import Collections.DoubleLinkedList;
 import Collections.Stack;
+import Collections.PriorityQueueFinal;
 import com.sun.jmx.remote.internal.ArrayQueue;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,7 +28,7 @@ public class LotteryManager {
     List<Lotto> lottos = new SimpleLinkeList<>();
     List<Bingo> bingos = new ArrayList<>();
     List<Tiempos> tiemposs = new ArrayList<>();
-    List<Order> orders = new LQueue<>();
+    private PriorityQueueFinal<Order> orders = new PriorityQueueFinal<>();
     List<Historial> historials = new Stack<>();
 
     public static final LotteryManager instance;
@@ -71,18 +72,14 @@ public class LotteryManager {
     }
 
     public void addOrder(Order order) {
-        this.orders.add(order);
+        this.orders.insert(order);
     }
 
     public void removeOrder(Order order) {
-        orders.remove(order);
+        orders.remove();
     }
 
-    public Collection<Order> getOrder() {
-        return orders;
-    }
-
-    public List<Order> getOrderrs() {
+    public PriorityQueueFinal<Order> getOrder() {
         return orders;
     }
 

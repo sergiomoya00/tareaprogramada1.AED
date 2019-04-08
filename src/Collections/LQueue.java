@@ -4,12 +4,14 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import Lottery.*;
 
 public class LQueue<T> implements List<T> {
 
     private NodeSimpleLinkedList<T> front;
     private NodeSimpleLinkedList<T> rear;
     private int size;
+    private Client client;
 
     public LQueue() {
         this.front = new NodeSimpleLinkedList<>();

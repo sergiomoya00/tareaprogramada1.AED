@@ -5,11 +5,13 @@
  */
 package Lottery;
 
+import java.util.Objects;
+
 /**
  *
  * @author samoy
  */
-public class Client {
+public class Client implements Comparable<Client>{
 
     private String name;
     private int id;
@@ -76,6 +78,43 @@ public class Client {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Client client = (Client) o;
+        return Integer.compare(client.birthdate, birthdate) == 0
+                && Objects.equals(name, client.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, birthdate);
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{"
+                + "name='" + name + '\''
+                + ", salary=" + birthdate
+                + '}';
+    }
+
+    // Compara dos clientes por su edad
+    @Override
+    public int compareTo(Client client) {
+        if (this.getBirthdate()> client.getBirthdate()) {
+            return 1;
+        } else if (this.getBirthdate() < client.getBirthdate()) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 
 }

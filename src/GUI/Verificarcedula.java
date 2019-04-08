@@ -21,6 +21,9 @@ public class Verificarcedula extends javax.swing.JFrame {
     /**
      * Creates new form Consultapedidos
      */
+    
+    private Client client;
+    
     public Verificarcedula() {
         initComponents();
     }

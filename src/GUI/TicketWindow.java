@@ -13,6 +13,7 @@ import Lottery.RaffleType;
 
 import Lottery.Tickets;
 import Lottery.Tiempos;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -192,18 +193,17 @@ public class TicketWindow extends javax.swing.JFrame {
         this.ticket = new Tickets();
         
         if (typeTxt.getSelectedIndex()==0){
+        int num1 = Integer.parseInt(txtnum1.getText());
+        if (num1>=0&&num1<=99){
         this.ticket.setTransmitterName(trasmitterName.getText());
         this.ticket.setRaffleType(type);
-        int num1 = Integer.parseInt(txtnum1.getText());
         int prices = Integer.parseInt(priceTxt.getText());
         this.ticket.setNumber1(num1);
         this.ticket.setPrice(prices);
-        
-        
+        }
+        else {JOptionPane.showMessageDialog(null, "Digitar numero entre 0-99 para jugar lotería");}
         }
         if (typeTxt.getSelectedIndex()==1){
-        this.ticket.setTransmitterName(trasmitterName.getText());
-        this.ticket.setRaffleType(type);
         int num1 = Integer.parseInt(txtnum1.getText());
         int num2 = Integer.parseInt(txtnum2.getText());
         int num3 = Integer.parseInt(txtnum3.getText());
@@ -211,6 +211,9 @@ public class TicketWindow extends javax.swing.JFrame {
         int num5 = Integer.parseInt(txtnum5.getText());
         int num6 = Integer.parseInt(txtnum6.getText());
         int num7 = Integer.parseInt(txtnum7.getText());
+        if (num1>=0&&num1<=9&&num2>=0&&num2<=9&&num3>=0&&num3<=9&&num4>=0&&num4<=9&&num5>=0&&num5<=9&&num6>=0&&num6<=9&&num7>=0&&num7<=9){
+        this.ticket.setTransmitterName(trasmitterName.getText());
+        this.ticket.setRaffleType(type);
         int prices = Integer.parseInt(priceTxt.getText());
         this.ticket.setNumber1(num1);
         this.ticket.setNumber2(num2);
@@ -219,12 +222,10 @@ public class TicketWindow extends javax.swing.JFrame {
         this.ticket.setNumber5(num5);
         this.ticket.setNumber6(num6);
         this.ticket.setNumber7(num7);
-        this.ticket.setPrice(prices);
-        
+        this.ticket.setPrice(prices);}
+        else {JOptionPane.showMessageDialog(null, "Revisar que cada numero insertado para jugar lotto sea de un solo digito");}
         }
         if (typeTxt.getSelectedIndex()==2){
-        this.ticket.setTransmitterName(trasmitterName.getText());
-        this.ticket.setRaffleType(type);
         int num1 = Integer.parseInt(txtnum1.getText());
         int num2 = Integer.parseInt(txtnum2.getText());
         int num3 = Integer.parseInt(txtnum3.getText());
@@ -233,7 +234,11 @@ public class TicketWindow extends javax.swing.JFrame {
         int num6 = Integer.parseInt(txtnum6.getText());
         int num7 = Integer.parseInt(txtnum7.getText());
         int num8 = Integer.parseInt(txtnum8.getText());
-        int num9 = Integer.parseInt(txtnum9.getText());
+        int num9 = Integer.parseInt(txtnum9.getText()); 
+        
+        if (num1>=0&&num1<=99&&num2>=0&&num2<=99&&num3>=0&&num3<=9&&num4>=0&&num4<=99&&num5>=0&&num5<=99&&num6>=0&&num6<=99&&num7>=0&&num7<=99&&num8>=0&&num8<=99&&num9>=0&&num9<=99){
+        this.ticket.setTransmitterName(trasmitterName.getText());
+        this.ticket.setRaffleType(type);
         int prices = Integer.parseInt(priceTxt.getText());
         this.ticket.setNumber1(num1);
         this.ticket.setNumber2(num2);
@@ -244,19 +249,25 @@ public class TicketWindow extends javax.swing.JFrame {
         this.ticket.setNumber7(num7);
         this.ticket.setNumber8(num8);
         this.ticket.setNumber9(num9);
-        this.ticket.setPrice(prices);
+        this.ticket.setPrice(prices);}
+        else{JOptionPane.showMessageDialog(null, "Revisar que cada numero insertado para jugar bingo sean numeros entre 0-99");
+                }
         
         }
         if (typeTxt.getSelectedIndex()==3){
-        this.ticket.setTransmitterName(trasmitterName.getText());
-        this.ticket.setRaffleType(type);
         int num1 = Integer.parseInt(txtnum1.getText());
         int num2 = Integer.parseInt(txtnum2.getText());
+        if(num1>=0&&num1<=99&&num2>=0&&num2<=99){
+        this.ticket.setTransmitterName(trasmitterName.getText());
+        this.ticket.setRaffleType(type);
         int prices = Integer.parseInt(priceTxt.getText());
         this.ticket.setNumber1(num1);
         this.ticket.setNumber2(num2);
         this.ticket.setPrice(prices);
-       
+        
+        }
+        else{JOptionPane.showMessageDialog(null, "Revisar que la combinación principal-jugada sean numeros entre 0-99");
+                }
         }
         
         LotteryManager.getInstance().addTickets(ticket);

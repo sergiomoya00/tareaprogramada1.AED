@@ -44,6 +44,7 @@ public class LotteryManager {
                 setNumbemission(1);
                 setType(RaffleType.Loteria.name());
                 setEmission("12/12/19");
+                setDate("25/11/19");
                 setCode(45);
             }
         });
@@ -53,6 +54,7 @@ public class LotteryManager {
                 setNumbemission(2);
                 setType(RaffleType.Lotto.name());
                 setEmission("12/11/19");
+                setDate("25/11/19");
                 setCode(34);
             }
         });
@@ -161,7 +163,9 @@ public class LotteryManager {
     public void removeTickets(int index) {
         tickets.remove(index);
     }
-
+    public void removeOrders(int index) {
+        orders.remove(index);
+    }
     public Collection<Tickets> getTickets() {
         return tickets;
     }
@@ -174,6 +178,10 @@ public class LotteryManager {
     public Preorder getPreorder(int index) {  
         Preorder preorder=preorders.get(index);
         return preorder;
+        }
+    public Order getorder(int index) {  
+        Order order=orders.get(index);
+        return order;
         }
 
     public void addTickets(Tickets newTickets) {

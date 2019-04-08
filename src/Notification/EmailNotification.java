@@ -13,17 +13,18 @@ import javax.activation.*;
 import javax.swing.JOptionPane;
 
 public class EmailNotification {
-
+    
     private static final EmailNotification instance = new EmailNotification();
 
     public static EmailNotification getInstance() {
         return instance;
     }
+    
 
     private String host = "smtp.gmail.com";
-    private final String user = "virtualTEC12018@gmail.com";
-    private final String password = "virtualtec1";
-    private final String to = "s.a.moyas.00@hotmail.com";
+    private final String user = "proyectoprogramado2dnjab@gmail.com";
+    private final String password = "dropbox123";
+    private final String to = "jabrenega@gmail.com";
 
     private Properties getProperties() {
 

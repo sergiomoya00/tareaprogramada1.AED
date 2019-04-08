@@ -7,36 +7,44 @@ package Lottery;
 
 /**
  *
- * @author samoy
+ * @author José Andres
  */
-public class Order {
+public class Preorder {
+private String clientName,Transmittername;
+    private String raffleType,email;
 
-    private String clientName;
-    private String raffleType;
-    private String number,email;
-
- 
-    private int price,age;
-
+    
+    
+   
    
 
-    public Order(String clientName, String raffleType, String number, int price) {
+    public Preorder(String Transmittername,String clientName, String raffleType, String number, int price,int age) {
         this.clientName = clientName;
         this.raffleType = raffleType;
         this.number = number;
         this.price = price;
+        this.age=age;
+        this.Transmittername=Transmittername;
     }
 
-    public Order() {
+    public Preorder() {
     }
-       public String getEmail() {
+    public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
-    
+    private String number;
+    private int price,age;
+    public String getTransmittername() {
+        return Transmittername;
+    }
+
+    public void setTransmittername(String Transmittername) {
+        this.Transmittername = Transmittername;
+    }
      public int getAge() {
         return age;
     }

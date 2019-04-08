@@ -5,7 +5,8 @@ import Lottery.Order;
 import Lottery.Preorder;
 import Lottery.Tickets;
 import javax.swing.table.DefaultTableModel;
-import sun.security.krb5.internal.Ticket;
+
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,11 +25,16 @@ public class Consultapedido extends javax.swing.JFrame {
     private Tickets ticket;
     private Order order;
     private Preorder preorder;
+   
+
+
     
+
     public Preorder getPreorder() {
         return preorder;
     }
-     public Order getOrder() {
+
+    public Order getOrder() {
         return order;
     }
 
@@ -38,6 +44,7 @@ public class Consultapedido extends javax.swing.JFrame {
 
     public Consultapedido() {
         initComponents();
+        refresh();
     }
 
     public void refresh() {
@@ -112,7 +119,7 @@ public class Consultapedido extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 410, -1, -1));
 
         jButton4.setText("Ver pedidos");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -132,47 +139,51 @@ public class Consultapedido extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        int size = LotteryManager.getInstance().getTickets().size();
-        
+        int size = LotteryManager.getInstance().getpreOrders().size();
         for (int i = 0; i < size; i++) {
             this.order = new Order();
             Preorder current = LotteryManager.getInstance().getPreorder(i);
-            String client = current.getClientName();
+            String client = (String) current.getClientName();
             String number = current.getNumber();
             int price = current.getPrice();
             String Raffletype = current.getRaffleType();
+            String correo=current.getEmail();
+            
             int age = current.getAge();
-
+            this.order.setEmail(correo);
             this.order.setClientName(client);
             this.order.setNumber(number);
             this.order.setPrice(price);
             this.order.setRaffleType(Raffletype);
             this.order.setAge(age);
             LotteryManager.getInstance().addOrder(order);
-        }
-
+}
+        
+        LotteryManager.getInstance().getpreOrders().clear();
+        LotteryManager.getInstance().getClient().clear();
         Finalpedido usuario = new Finalpedido();
         usuario.setVisible(true);
         this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.ticket=new Tickets();
-      
+        this.ticket = new Tickets();
+
         int size = LotteryManager.getInstance().getpreOrders().size();
         for (int i = 0; i < size; i++) {
-        Preorder current = LotteryManager.getInstance().getPreorder(Tablaticket.getSelectedRow());
-        String transmittername=current.getTransmittername();
-        String raffletype=current.getRaffleType();
-        String number=current.getNumber();
-        int price=current.getPrice();
-        this.ticket.setNum(number);
-        this.ticket.setRaffleType(raffletype);
-        this.ticket.setPrice(price);
-        this.ticket.setTransmitterName(transmittername);
-        LotteryManager.getInstance().removepreOrder(this.Tablaticket.getSelectedRow());
-        LotteryManager.getInstance().addTickets(ticket);
-        refresh(); }       // TODO add your handling code here:
+            Preorder current = LotteryManager.getInstance().getPreorder(Tablaticket.getSelectedRow());
+            String transmittername = current.getTransmittername();
+            String raffletype = current.getRaffleType();
+            String number = current.getNumber();
+            int price = current.getPrice();
+            this.ticket.setNum(number);
+            this.ticket.setRaffleType(raffletype);
+            this.ticket.setPrice(price);
+            this.ticket.setTransmitterName(transmittername);
+            LotteryManager.getInstance().removepreOrder(this.Tablaticket.getSelectedRow());
+            LotteryManager.getInstance().addTickets(ticket);
+            refresh();
+        }       // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

@@ -59,8 +59,6 @@ public class Gestionpedidos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        txtmessage = new javax.swing.JTextField();
-        txtcorreo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -99,17 +97,13 @@ public class Gestionpedidos extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 380, -1, -1));
 
-        txtmessage.setText("jTextField1");
-        getContentPane().add(txtmessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, -1, -1));
-
-        txtcorreo.setText("jTextField2");
-        getContentPane().add(txtcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, -1, -1));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-                // TODO add your handling code here:
+    Gestionjps usuario= new Gestionjps();
+    usuario.setVisible(true);
+    this.setVisible(false);                 // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -117,7 +111,7 @@ public class Gestionpedidos extends javax.swing.JFrame {
     final String user="bibliotecaati2018@gmail.com";
     final String password="dropbox123";
     
-    String to=txtcorreo.getText();
+    String to="jabrenega@gmail.com";
 
     Properties props=new Properties();
     props.put("mail.smtp.host",host);
@@ -139,7 +133,7 @@ public class Gestionpedidos extends javax.swing.JFrame {
     message.setFrom(new InternetAddress(user));
     message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
     message.setSubject("Solicitud recibida");
-    message.setText(txtmessage.getText());
+    message.setText("hola");
     
     Transport.send(message);
     JOptionPane.showMessageDialog(null, "correo enviado");
@@ -191,7 +185,5 @@ public class Gestionpedidos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaconsultar;
-    private javax.swing.JTextField txtcorreo;
-    private javax.swing.JTextField txtmessage;
     // End of variables declaration//GEN-END:variables
 }

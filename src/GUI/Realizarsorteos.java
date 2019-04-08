@@ -89,8 +89,6 @@ public class Realizarsorteos extends javax.swing.JFrame {
         combotype = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         raffletable = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -119,10 +117,6 @@ public class Realizarsorteos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(raffletable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 540, 140));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 290, 80));
-
-        jLabel3.setText("Ganador");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
 
         jButton1.setText("Atrás");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -194,9 +188,7 @@ public class Realizarsorteos extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable raffletable;
     // End of variables declaration//GEN-END:variables
 }

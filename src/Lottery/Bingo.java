@@ -11,17 +11,28 @@ import Lottery.Tickets;
  * @author samoy
  */
 public class Bingo {
+    
+    //Atributos de la clase.
 
     private String datebingo,name,dateemission,add;
     private int winnernumb;
     private int numero1,numero2,numero3,numero4,numero5,numero6,numero7,numero8,numero9;
     private Tickets ticket;
 
+    //Constructor principal.
+    
     public Bingo(String date, int winner) {
         this.datebingo = date;
         this.winnernumb = winner;
     }
-    public Bingo(){}
+    
+    //Constructor vacío.
+    
+    public Bingo(){
+    }
+    
+    //Getters y setters de cada atributo.
+    
      public int getWinnernumb() {
         return winnernumb;
     }

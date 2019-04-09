@@ -10,6 +10,8 @@ package Lottery;
  * @author samoy
  */
 public class Tickets {
+    
+    //Atributos de la clase.
 
     private String transmitterName;
     private String clientName;
@@ -17,6 +19,7 @@ public class Tickets {
     private int number1,number2,number3,number4,number5,number6,number7,number8,number9;
     private int price,age;
 
+    //Constructor principal.
 
     public Tickets(String transmitterName, String clientName, String raffleType, int number1, int price) {
         this.transmitterName = transmitterName;
@@ -25,8 +28,14 @@ public class Tickets {
         this.number1 = number1;
         this.price = price;
     }
+    
+    //Constructor vacío.
+    
     public Tickets() {
     }
+    
+    //Getters y setters de cada atributo.
+    
      public String getNum() {
         return num;
     }

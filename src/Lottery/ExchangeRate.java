@@ -24,14 +24,16 @@ import org.json.JSONObject;
  * @author samoy
  */
 public class ExchangeRate {
-
+    
+    //Se asignan los valores necesarios para acceder al API.
     public static final String ACCESS_KEY = "f8647da0bebf7b9dd8ecab46dd86f8b3";
     public static final String BASE_URL = "https://apilayer.net/api/";
     public static final String ENDPOINT = "convert";
 
-    // this object is used for executing requests to the (REST) API
+    //Este objeto es utilizado para slicitar al API el REST.
     static CloseableHttpClient httpClient = HttpClients.createDefault();
 
+    //Método para enviar la solicitud al usuario del API.
     public static void sendConvertRequest() {
 
         // the "from", "to" and "amount" can be set as variables

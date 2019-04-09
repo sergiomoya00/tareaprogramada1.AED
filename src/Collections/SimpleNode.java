@@ -2,10 +2,12 @@ package Collections;
 
 public class SimpleNode<T> {
 
+    //Atributos 
     SimpleNode<T> next;
     SimpleNode<T> previous;
     T value;
 
+    //Constructores
     public SimpleNode(SimpleNode<T> next, T value, SimpleNode<T> previous) {
         this.next = next;
         this.value = value;
@@ -24,6 +26,7 @@ public class SimpleNode<T> {
     public SimpleNode() {
     }
 
+    //Getters y setters del siguente, anterior y valor.
     public SimpleNode<T> getNext() {
         return next;
     }

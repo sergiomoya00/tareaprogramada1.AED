@@ -10,10 +10,14 @@ package Lottery;
  * @author José Andres
  */
 public class Preorder {
+    
+    //Atributos de la clase.
 
     private String clientName, Transmittername;
     private String raffleType, email,number;
     private int age,price;
+    
+    //Constructor principal.
 
     public Preorder(String Transmittername, String clientName, String raffleType, String number, String email, int price, int age) {
         this.clientName = clientName;
@@ -24,9 +28,13 @@ public class Preorder {
         this.Transmittername = Transmittername;
         this.email = email;
     }
+    
+    //Constructor vacío.
 
     public Preorder() {
     }
+    
+    //Getters y setters de cada atributo.
 
     public String getEmail() {
         return email;

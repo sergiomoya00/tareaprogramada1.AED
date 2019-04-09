@@ -7,9 +7,11 @@ package Collections;
 
 
 public class NodeSimpleLinkedList<T> {
+    //Atributos
     NodeSimpleLinkedList <T> next;
     T value;
 
+    //Constructores
     public NodeSimpleLinkedList(NodeSimpleLinkedList<T> next, T value) {
         this.next = next;
         this.value = value;
@@ -22,6 +24,8 @@ public class NodeSimpleLinkedList<T> {
        this.value=null;
        this.next=null;
     }
+    
+    //Getters y setters de siguente y valor.
 
     public NodeSimpleLinkedList<T> getNext() {
         return next;

@@ -10,12 +10,15 @@ package Lottery;
  * @author samoy
  */
 public class Raffle {
+    
+    //Atributos de la clase.
 
     private String name;
     private int code,numbemission;
     private String type;
     private String emission,date;
     
+    //Constructor principal.
 
     public Raffle(String name, int code, String type, String emission) {
         this.name = name;
@@ -23,9 +26,14 @@ public class Raffle {
         this.type = type;
         this.emission = emission;
     }
+    
+    //Constructor vacío.
 
     public Raffle() {
     }
+    
+    //Getters y setters de cada atributo.
+    
     public int getNumbemission() {
         return numbemission;
     }

@@ -12,16 +12,18 @@ import java.util.ListIterator;
 
 public class SimpleLinkeList<T> implements List<T> {
 
+    //Atributos
     NodeSimpleLinkedList<T> head;
     private int size;
     
     
-
+    //Método para verificar el tamaño.
     @Override
     public int size() {
         return this.size;
     }
 
+    //Método para verificar si esta vacía la lista.
     @Override
     public boolean isEmpty() {
         return this.size == 0;

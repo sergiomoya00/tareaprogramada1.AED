@@ -12,12 +12,16 @@ import java.util.Objects;
  * @author samoy
  */
 public class Order implements Comparable<Order> {
+    
+    //Atributos de la clase.
 
     private String clientName;
     private String raffleType;
     private String number, email;
 
     private int price, age;
+    
+    //Constructor principal.
 
     public Order(String clientName, String raffleType, String number, String email, int price, int age) {
         this.clientName = clientName;
@@ -27,14 +31,20 @@ public class Order implements Comparable<Order> {
         this.price = price;
         this.age = age;
     }
+    
+    //Constructor de prueba.
 
     public Order(String clientName, int age) {
         this.clientName = clientName;
         this.age = age;
     }   
+    
+    //Constructor vacío.
 
     public Order() {
     }
+    
+    //Getters y setters de cada atributo.
 
     public String getEmail() {
         return email;
@@ -84,6 +94,7 @@ public class Order implements Comparable<Order> {
         this.price = price;
     }
 
+    //Método para comparar si dos ordenes consecutivas son iguales.
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -101,7 +112,8 @@ public class Order implements Comparable<Order> {
     public int hashCode() {
         return Objects.hash(clientName, age);
     }
-
+    
+    //Para convertirlo a un String.
     @Override
     public String toString() {
         return "Employee{"
@@ -110,7 +122,7 @@ public class Order implements Comparable<Order> {
                 + '}';
     }
 
-    // Compara dos clientes por su edad
+    // Compara dos ordenes por su edad. 
     @Override
     public int compareTo(Order client) {
         if (this.getAge() > client.getAge()) {

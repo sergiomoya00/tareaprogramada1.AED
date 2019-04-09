@@ -18,12 +18,14 @@ import java.util.ListIterator;
  */
 public class LPriorityQueueFinal<T extends Comparable<T>> extends SimpleLinkeList<T> implements List<T> {
 
+    //Atributos
     private SimpleNode<T> back;
     private int size;
     private SimpleNode<T> front;
     private int incomeCounter;
     private int outcomeCounter;
 
+    //Constructor
     public LPriorityQueueFinal() {
         this.front = new SimpleNode<>();
         this.back = this.front;
@@ -32,11 +34,7 @@ public class LPriorityQueueFinal<T extends Comparable<T>> extends SimpleLinkeLis
         this.outcomeCounter = 0;
     }
 
-    public int peopleWaiting(int incomeCounter, int outcomeCounter) {
-        int result = incomeCounter - outcomeCounter;
-        return result;
-    }
-
+    //Método para sacar el elemento de la cola.
     public T dequeque() {
         if (size == 0) {
             return null;
@@ -53,22 +51,23 @@ public class LPriorityQueueFinal<T extends Comparable<T>> extends SimpleLinkeLis
                 this.back = this.front;
             }
             size--;
-            outcomeCounter++;
             return tempValue;
         }
     }
 
+    //Método para verificar el tamaño.
     @Override
     public int size() {
         return this.size;
     }
 
+    //Método para si la cola está vacía.
     @Override
     public boolean isEmpty() {
         return this.size == 0;
     }
 
-    //Para  evaluar la condición médica de los pacientes
+    //Para  evaluar la edad de las ordenes. 
     @Override
     public boolean contains(Object o) {
         if (size == 0) {
@@ -87,6 +86,7 @@ public class LPriorityQueueFinal<T extends Comparable<T>> extends SimpleLinkeLis
         return false;
     }
 
+    //Método iterador.
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
@@ -148,6 +148,7 @@ public class LPriorityQueueFinal<T extends Comparable<T>> extends SimpleLinkeLis
         return true;
     }
 
+    //Método para eliminar el primer nodo de la cola.
     @Override
     public boolean remove(Object o) {
         SimpleNode current = this.front;
@@ -203,6 +204,7 @@ public class LPriorityQueueFinal<T extends Comparable<T>> extends SimpleLinkeLis
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    //Método vaciar la cola.
     @Override
     public void clear() {
         this.size = 0;
@@ -210,6 +212,7 @@ public class LPriorityQueueFinal<T extends Comparable<T>> extends SimpleLinkeLis
 
     }
 
+    //Método para obtener el objeto en la posición deseada.
     @Override
     public T get(int index) {
 
@@ -230,6 +233,7 @@ public class LPriorityQueueFinal<T extends Comparable<T>> extends SimpleLinkeLis
         return (T) current.getValue();
     }
 
+    //Método para definir el objeto del nodo deseado(indicado por su posición).
     @Override
     public T set(int index, T element) {
         SimpleNode<T> current = front;
@@ -243,6 +247,7 @@ public class LPriorityQueueFinal<T extends Comparable<T>> extends SimpleLinkeLis
 
     }
 
+    //Método añadir un elemento en la posición deseada.
     @Override
     public void add(int index, T element) {
         SimpleNode<T> current = this.front;
@@ -274,6 +279,7 @@ public class LPriorityQueueFinal<T extends Comparable<T>> extends SimpleLinkeLis
         size++;
     }
 
+    //Método para eliminar un nodo en la posición deseada.
     @Override
     public T remove(int index) {
 
@@ -299,6 +305,7 @@ public class LPriorityQueueFinal<T extends Comparable<T>> extends SimpleLinkeLis
 
     }
 
+    //Método para verificar la posición de un objeto en la cola.
     @Override
     public int indexOf(Object o) {
         int index = 0;
@@ -334,6 +341,8 @@ public class LPriorityQueueFinal<T extends Comparable<T>> extends SimpleLinkeLis
     public List<T> subList(int fromIndex, int toIndex) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    //Método de prueba.
 
     public String toString() {
         while (size > 0) {

@@ -16,12 +16,14 @@ import java.util.List;
 
 public class PriorityQueueFinal<T extends Comparable<T>> {
 
+    //Atributos
     private List<T> priorityQueue;
 
     public PriorityQueueFinal() {
         priorityQueue = new ArrayList<>();
     }
 
+    //Método para verificar el tamaño.
     public int size() {
         return priorityQueue.size();
     }
@@ -29,11 +31,13 @@ public class PriorityQueueFinal<T extends Comparable<T>> {
     public boolean isEmpty() {
         return priorityQueue.isEmpty();
     }
-
+    
+    //Método para verificar el tope de la cola.
     public T top() {
         return priorityQueue.size() > 0 ? priorityQueue.get(0) : null;
     }
-
+    
+    //Método para eliminar el nodo.
     public T remove() {
         if (priorityQueue.isEmpty()) {
             return null;
@@ -43,6 +47,7 @@ public class PriorityQueueFinal<T extends Comparable<T>> {
         return result;
     }
 
+    //Método para insertar el nodo.
     public void insert(T e) {
         priorityQueue.add(e);
         Collections.sort(priorityQueue);

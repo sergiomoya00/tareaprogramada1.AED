@@ -10,15 +10,23 @@ package Lottery;
  * @author samoy
  */
 public class Historial {
+    
+    //Atributos de la clase.
 
     private String searched;
+    
+    //Constructor principal.
 
     public Historial(String searched) {
         this.searched = searched;
     }
+    
+    //Constructor vacío.
 
     public Historial() {
     }
+    
+    //Getters y setters de cada atributo.
 
     public String getSearched() {
         return searched;

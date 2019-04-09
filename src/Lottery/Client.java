@@ -13,6 +13,8 @@ package Lottery;
  */
 public class Client{
 
+    //Atributos de la clase.
+    
     private String name;
     private int id;
     private int birthdate;
@@ -20,6 +22,8 @@ public class Client{
     private int phone;
     private String email;
 
+    //Constructor principal.
+    
     public Client(String name, int id, int birthdate, String address, int phone, String email) {
         this.name = name;
         this.id = id;
@@ -28,9 +32,13 @@ public class Client{
         this.phone = phone;
         this.email = email;
     }
+    
+    //Constructor vacío.
 
     public Client() {
     }
+    
+    //Getters y setters de cada atributo.
 
     public String getName() {
         return name;

@@ -8,23 +8,27 @@ import Lottery.*;
 
 public class LQueue<T> implements List<T> {
 
+    //Atributos
     private NodeSimpleLinkedList<T> front;
     private NodeSimpleLinkedList<T> rear;
     private int size;
     private Client client;
 
+    //Constructor
     public LQueue() {
         this.front = new NodeSimpleLinkedList<>();
         this.rear = this.front;
         this.size = 0;
     }
 
+    //Método para añadir un nodo.
     public void enqueue(T value) {
         this.rear.setNext(new NodeSimpleLinkedList<>(null, value));
         this.rear = rear.getNext();
         this.size++;
     }
 
+    //Método para sacar un nodo.
     public T dequeue() {
         if (this.size == 0) {
             System.out.println("Queue is empty");
@@ -40,6 +44,7 @@ public class LQueue<T> implements List<T> {
         return temp;
     }
 
+    //Método para obtener el primer nodo.
     public Object first() {
         if (this.size == 0) {
             System.out.println("Queue is empty");
@@ -48,6 +53,7 @@ public class LQueue<T> implements List<T> {
         return this.front.getNext().getValue();
     }
 
+    //Método para verificar el tamaño.
     public int size() {
         return this.size;
     }
@@ -70,6 +76,7 @@ public class LQueue<T> implements List<T> {
         return result;
     }
 
+    //Método para rotar la cola.
     public void rotate() {
         if (this.size == 0) {
             System.out.println("Queue is empty");

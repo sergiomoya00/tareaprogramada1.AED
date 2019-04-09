@@ -5,14 +5,15 @@
  */
 package Collections;
 
-import java.util.Iterator;
 
 public class Stack<T> extends SimpleLinkeList<T> {
 
+    //Método para añadir un nodo a la pila.
     public void push(T e) {
         add(0, e);
     }
 
+    //Método para eliminar un nodo.
     public T pop() {
         return remove(0);
     }
@@ -21,6 +22,7 @@ public class Stack<T> extends SimpleLinkeList<T> {
         return isEmpty() ? null : head.getValue();
     }
 
+    //Método para obtener el valor de una posición en específico.
     public T getValue(int index) {
         if (isEmpty() == true) {
             return null;

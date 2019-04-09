@@ -10,19 +10,27 @@ package Lottery;
  * @author samoy
  */
 public class Loteria {
+    
+    //Atributos de la clase.
 
     private String date,name,emissiondate,loteriadate;
     private int winner;
     private Tickets ticket;
 
-
+    //Constructor principal.
+    
     public Loteria(String date, int winner) {
         this.date = date;
         this.winner = winner;
     }
+    
+    //Constructor vacío.
 
     public Loteria() {
     }
+    
+    //Getters y setters de cada atributo.
+    
     public Tickets getTicket() {
         return ticket;
     }

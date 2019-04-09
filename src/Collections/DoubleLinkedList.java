@@ -5,14 +5,16 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class DoubleLinkedList<T> implements List<T>{
+public class DoubleLinkedList<T> implements List<T> {
 
+    //Atributos 
     private Node<T> head;
     private Node<T> current;
     private Node<T> tail;
     private int position;
     private int size;
 
+    //Constructor
     public DoubleLinkedList() {
         this.head = new Node<T>();
         this.current = this.head;
@@ -21,14 +23,16 @@ public class DoubleLinkedList<T> implements List<T>{
         this.position = 0;
     }
 
+    //Método para verificar el tamaño de la lista.
     @Override
     public int size() {
         return this.size;
     }
 
+    //Método para verificar si la lista está vacía.
     @Override
     public boolean isEmpty() {
-        if (this.size == 0){
+        if (this.size == 0) {
             return true;
         }
         return false;
@@ -39,12 +43,13 @@ public class DoubleLinkedList<T> implements List<T>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    //Método iterador.
     @Override
     public Iterator<T> iterator() {
-            return new Iterator<T>(){
-            
+        return new Iterator<T>() {
+
             Node<T> current = head;
-            
+
             @Override
             public boolean hasNext() {
                 return current != null;
@@ -52,9 +57,9 @@ public class DoubleLinkedList<T> implements List<T>{
 
             @Override
             public T next() {
-               T result = current.getElement();
-               current = current.getNext();
-               return result;
+                T result = current.getElement();
+                current = current.getNext();
+                return result;
             }
         };
     }
@@ -69,28 +74,30 @@ public class DoubleLinkedList<T> implements List<T>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    //Método añadir un nodo.
     @Override
     public boolean add(T e) {
         this.add(size(), e);
         return true;
     }
 
+    //Método para eliminar un nodo.
     @Override
     public boolean remove(Object o) {
-        
+
         Node current = this.head;
 
         if (this.head == null) {
             return false;
         }
-        
-        if (this.head.getElement().equals(o)){
+
+        if (this.head.getElement().equals(o)) {
             size--;
             head = current.getNext();
             return true;
         }
 
-        while (current.getNext() != null && ! current.getNext().getElement().equals(o)) {
+        while (current.getNext() != null && !current.getNext().getElement().equals(o)) {
             current = current.getNext();
         }
 
@@ -136,9 +143,9 @@ public class DoubleLinkedList<T> implements List<T>{
 
     @Override
     public T get(int index) {
-        
+
         throw new UnsupportedOperationException("Not supported yet.");
-        
+
     }
 
     @Override
@@ -146,6 +153,7 @@ public class DoubleLinkedList<T> implements List<T>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    //Método añadir un nodo en la posición deseada.
     @Override
     public void add(int index, T element) {
         Node<T> current = this.head;
@@ -178,17 +186,18 @@ public class DoubleLinkedList<T> implements List<T>{
 
     }
 
+    //Método para eliminar un nodo en una posición específica.
     @Override
-public T remove(int index) {
-        
+    public T remove(int index) {
+
         Node<T> current = head;
-        
-        if (index == 0){
+
+        if (index == 0) {
             head = current.getNext();
-            size --;
+            size--;
             return current.element;
         }
-        
+
         while (--index > 0) {
             current = current.getNext();
 
@@ -206,6 +215,7 @@ public T remove(int index) {
         return oldValue;
 
     }
+
     @Override
     public int indexOf(Object o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

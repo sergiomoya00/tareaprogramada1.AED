@@ -10,6 +10,8 @@ import java.util.Random;
  * @author samoy
  */
 public class Lotto {
+    
+    //Atributos de la clase.
 
     private int acumulado=1000000;
     private String lottodate,emissiondate,name;
@@ -17,13 +19,20 @@ public class Lotto {
     private int digito1,digito2,digito3,digito4,digito5,digito6,digito7;
     private Tickets ticket;
 
+    //Constructor principal.
    
     public Lotto(int acumulado, String date, int winner) {
         this.acumulado = acumulado;
         this.lottodate = date;
         this.winnernumb = winner;
     }
-    public Lotto(){}
+    
+    //Constructor vacío.
+    
+    public Lotto(){
+    }
+    
+    //Getters y setters de cada atributo.
     
      public int getDigito1() {
         return digito1;

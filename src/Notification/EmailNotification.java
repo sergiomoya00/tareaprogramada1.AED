@@ -14,13 +14,14 @@ import javax.swing.JOptionPane;
 
 public class EmailNotification {
     
+    //Atributo para instanciar
     private static final EmailNotification instance = new EmailNotification();
 
     public static EmailNotification getInstance() {
         return instance;
     }
     
-
+    //Atributos predeterminados para enviar el correo electrónico.
     private String host = "smtp.gmail.com";
     private final String user = "proyectoprogramado2dnjab@gmail.com";
     private final String password = "dropbox123";

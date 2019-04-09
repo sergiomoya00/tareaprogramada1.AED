@@ -12,6 +12,8 @@ import Lottery.Order;
  * @author samoy
  */
 public class Tests {
+    
+    //Clase de prueba 
 
     public static void main(String[] args) {
         /*

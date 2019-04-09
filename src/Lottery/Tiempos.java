@@ -12,12 +12,16 @@ import java.util.Random;
  * @author samoy
  */
 public class Tiempos {
+    
+    //Atributos de la clase.
 
     private String name, dateemission, datetiempos;
     private int principal;
     private int jugada;
     private int winner;
     private Tickets Ticket;
+    
+    //Constructor principal.
 
     public Tiempos(int principal, int jugada) {
         this.principal = principal;
@@ -27,6 +31,8 @@ public class Tiempos {
     public Tiempos() {
     }
 
+    //Getters y setters de cada atributo.
+    
     public Tickets getTicket() {
         return Ticket;
     }

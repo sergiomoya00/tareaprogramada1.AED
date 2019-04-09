@@ -21,6 +21,7 @@ import java.util.List;
  */
 public class LotteryManager {
 
+    //Se asigna a cada clase una estructura de datos en donde se almacenan elementos y sus atributos. 
     List<Tickets> tickets = new SimpleLinkeList<>();
     List<Preorder> preorders = new SimpleLinkeList<>();
     List<Raffle> raffles = new DoubleLinkedList<>();
@@ -29,16 +30,17 @@ public class LotteryManager {
     List<Lotto> lottos = new SimpleLinkeList<>();
     List<Bingo> bingos = new ArrayList<>();
     List<Tiempos> tiemposs = new ArrayList<>();
-    private PriorityQueueFinal orderss = new PriorityQueueFinal();
-    private Adapter orders;
     List<Historial> historials = new Stack<>();
+    private PriorityQueueFinal orderss = new PriorityQueueFinal();
 
+    //Variable para crear la instancia y referenciar los métodos por medio de ella.
     public static final LotteryManager instance;
 
     public static LotteryManager getInstance() {
         return instance;
     }
 
+    //Se crean algunas rifas por defecto para pruebas.
     static {
         instance = new LotteryManager();
         instance.raffles.add(new Raffle() {
@@ -63,6 +65,7 @@ public class LotteryManager {
         });
     }
 
+    //Métodos para añadir y eliminar un elemento de tipo Order. 
     public void addOrderr(Order order) {
         this.orderss.insert(order);
     }
@@ -71,99 +74,108 @@ public class LotteryManager {
         orderss.remove();
     }
 
+    //Método para obtener todos los elementos de la lista Order.
     public PriorityQueueFinal getOrderrr() {
         return orderss;
     }
-    
-       public Order getOrderrss(int index) {
+
+    //Método para obtener un elemento por medio de su posición.
+    public Order getOrderrss(int index) {
         Order order = (Order) orderss.get(index);
         return order;
     }
 
+    //Métodos para añadir y eliminar un elemento de tipo Historial.
     public void removeHistorial(Historial historial) {
         historials.remove(historial);
-    }
-
-    public Collection<Historial> getHistorials() {
-        return historials;
     }
 
     public void addHistorial(Historial newHistorial) {
         this.historials.add(newHistorial);
     }
 
-    public void addOrder(Order order) {
-        this.orders.push(order);
+    //Método para obtener todos los elementos de la lista Historials.
+    public Collection<Historial> getHistorials() {
+        return historials;
     }
 
-    public void removeOrder() {
-        orders.pop();
+    //Método para obtener todos los elementos de la lista Preorders.
+    public Collection<Preorder> getpreOrders() {
+        return preorders;
     }
 
-    public Adapter getOrder() {
-        return orders;
+    //Método para obtener un elemento por medio de su posición. 
+    public Preorder getPreorder(int index) {
+        Preorder preorder = preorders.get(index);
+        return preorder;
+    }
+
+    //Métodos para añadir y eliminar un elemento de tipo Preorder.
+    public void addpreOrder(Preorder newpreOrder) {
+        this.preorders.add(newpreOrder);
     }
 
     public void removepreOrder(int index) {
         preorders.remove(index);
     }
 
-    public Collection<Preorder> getpreOrders() {
-        return preorders;
+    //Método para obtener todos los elementos de la lista Loterias.
+    public Collection<Loteria> getLoterias() {
+        return loterias;
     }
 
-    public void addpreOrder(Preorder newpreOrder) {
-        this.preorders.add(newpreOrder);
+    //Métodos para añadir y eliminar un elemento de tipo Loteria.
+    public void addLoteria(Loteria newLoteria) {
+        this.loterias.add(newLoteria);
     }
 
     public void removeLoteria(int index) {
         loterias.remove(index);
     }
 
-    public Collection<Loteria> getLoterias() {
-        return loterias;
+    //Método para obtener todos los elementos de la lista Lotto.
+    public Collection<Lotto> getLotto() {
+        return lottos;
     }
 
-    public void addLoteria(Loteria newLoteria) {
-        this.loterias.add(newLoteria);
+    //Métodos para añadir y eliminar un elemento de tipo Lotto.
+    public void addLotto(Lotto newLotto) {
+        this.lottos.add(newLotto);
     }
 
     public void removeLotto(int index) {
         lottos.remove(index);
     }
 
-    public Collection<Lotto> getLotto() {
-        return lottos;
+    //Método para obtener todos los elementos de la lista Bingos.
+    public Collection<Bingo> getBingos() {
+        return bingos;
     }
 
-    public void addLotto(Lotto newLotto) {
-        this.lottos.add(newLotto);
+    //Métodos para añadir y eliminar un elemento de tipo Bingo.
+    public void addBingo(Bingo newBingo) {
+        this.bingos.add(newBingo);
     }
 
     public void removeBingo(int index) {
         bingos.remove(index);
     }
 
-    public Collection<Bingo> getBingos() {
-        return bingos;
+    //Método para obtener todos los elementos de la lista Tiempos.
+    public Collection<Tiempos> getTiempos() {
+        return tiemposs;
     }
 
-    public void addBingo(Bingo newBingo) {
-        this.bingos.add(newBingo);
+    //Métodos para añadir y eliminar un elemento de tipo Tiempos.
+    public void addTiempos(Tiempos newTiempos) {
+        this.tiemposs.add(newTiempos);
     }
 
     public void removeTiempos(int index) {
         tiemposs.remove(index);
     }
 
-    public Collection<Tiempos> getTiempos() {
-        return tiemposs;
-    }
-
-    public void addTiempos(Tiempos newTiempos) {
-        this.tiemposs.add(newTiempos);
-    }
-
+    //Métodos para añadir y eliminar un elemento de tipo Client.
     public void addClient(Client client) {
         this.clients.add(client);
     }
@@ -172,26 +184,35 @@ public class LotteryManager {
         clients.remove(client);
     }
 
+    //Método para obtener todos los elementos de la lista Client.
     public Collection<Client> getClient() {
         return clients;
     }
 
+    //Métodos para añadir y eliminar un elemento de tipo Raffle.
     public void removeRaffle(int index) {
         raffles.remove(index);
-    }
-
-    public Collection<Raffle> getRaffles() {
-        return raffles;
     }
 
     public void addRaffle(Raffle newRaffle) {
         this.raffles.add(newRaffle);
     }
 
+    //Método para obtener todos los elementos de la lista Raffles.
+    public Collection<Raffle> getRaffles() {
+        return raffles;
+    }
+
+    //Método para eliminar un elemento de tipo Tickets.
+    public void addTickets(Tickets newTickets) {
+        this.tickets.add(newTickets);
+    }
+
     public void removeTickets(int index) {
         tickets.remove(index);
     }
 
+    //Método para obtener todos los elementos de la lista Tickets.
     public Collection<Tickets> getTickets() {
         return tickets;
     }
@@ -200,15 +221,8 @@ public class LotteryManager {
      * @return @param index
      * @author samoy
      */
-    public Preorder getPreorder(int index) {
-        Preorder preorder = preorders.get(index);
-        return preorder;
-    }
-
-    public void addTickets(Tickets newTickets) {
-        this.tickets.add(newTickets);
-    }
-
+    
+    //Médoto para la búsqueda de rifas por medio del nombre, tipo o fecha de emisión.
     public Collection<Raffle> searchRaffle(Raffle newRaffle) {
         List<Raffle> results = new ArrayList<>();
 

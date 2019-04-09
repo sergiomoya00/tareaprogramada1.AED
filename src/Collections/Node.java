@@ -11,10 +11,12 @@ package Collections;
  */
 class Node<T> {
     
+    //Atributos
     T element;
     private Node next;
     private Node previous;
 
+    //Constructores 
     public Node() {
         this.element = null;
         this.next = null;
@@ -34,6 +36,7 @@ class Node<T> {
 
     }
 
+    //Getters y setters para elemento, siguente del elemento, anterior del elemento.
     public T getElement() {
         return this.element;
     }

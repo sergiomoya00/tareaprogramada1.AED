@@ -9,6 +9,9 @@ package Lottery;
  *
  * @author samoy
  */
+
+//Un enum para ingresar los nombres a los filtros de búsqueda. 
+
 public enum RaffleType {
     Loteria,
     Lotto,
